@@ -1,0 +1,138 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".bigbang", ".bigbang", "{6775D9A4-1D3F-43EF-A8CA-A6626A60B404}"
+	ProjectSection(SolutionItems) = preProject
+		BigBang.config = BigBang.config
+		BigBang.publish.artifact.ps1 = BigBang.publish.artifact.ps1
+		BigBang.publish.nuget.ps1 = BigBang.publish.nuget.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docker", ".docker", "{E34EC897-4DC1-43BF-95C8-268EBE30C4EB}"
+	ProjectSection(SolutionItems) = preProject
+		.docker\docker-compose.yml = .docker\docker-compose.yml
+		.docker\Dockerfile = .docker\Dockerfile
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".items", ".items", "{AB8782FE-9BE2-462A-B80A-6D49DEBCA73B}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		NuGet.config = NuGet.config
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host", "src\Host\Host.csproj", "{20DFDBA4-2C10-48BB-9E29-7EF07DBBB334}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".xsd", ".xsd", "{CF1487A5-21C8-4476-BE73-04DBFD775243}"
+	ProjectSection(SolutionItems) = preProject
+		.xsd\ApplicationConfig.xsd = .xsd\ApplicationConfig.xsd
+		.xsd\BigBangConfig.xsd = .xsd\BigBangConfig.xsd
+		.xsd\DMLApplication.xsd = .xsd\DMLApplication.xsd
+		.xsd\DMLApplicationConstant.xsd = .xsd\DMLApplicationConstant.xsd
+		.xsd\DMLCustomEditorDefinition.xsd = .xsd\DMLCustomEditorDefinition.xsd
+		.xsd\DMLCustomFormExtension.xsd = .xsd\DMLCustomFormExtension.xsd
+		.xsd\DMLCustomSiteItem.xsd = .xsd\DMLCustomSiteItem.xsd
+		.xsd\DMLCustomView.xsd = .xsd\DMLCustomView.xsd
+		.xsd\DMLDataInitializer.xsd = .xsd\DMLDataInitializer.xsd
+		.xsd\DMLDynamicFilterValue.xsd = .xsd\DMLDynamicFilterValue.xsd
+		.xsd\DMLEntityModel.xsd = .xsd\DMLEntityModel.xsd
+		.xsd\DMLEnumDefinition.xsd = .xsd\DMLEnumDefinition.xsd
+		.xsd\DMLExpressionFunction.xsd = .xsd\DMLExpressionFunction.xsd
+		.xsd\DMLExtendedApplicationConstant.xsd = .xsd\DMLExtendedApplicationConstant.xsd
+		.xsd\DMLExtendedCustomView.xsd = .xsd\DMLExtendedCustomView.xsd
+		.xsd\DMLExtendedEntityModel.xsd = .xsd\DMLExtendedEntityModel.xsd
+		.xsd\DMLExtendedForm.xsd = .xsd\DMLExtendedForm.xsd
+		.xsd\DMLExtendedGlobalCommand.xsd = .xsd\DMLExtendedGlobalCommand.xsd
+		.xsd\DMLExtendedMenu.xsd = .xsd\DMLExtendedMenu.xsd
+		.xsd\DMLExtendedModule.xsd = .xsd\DMLExtendedModule.xsd
+		.xsd\DMLExtendedProcess.xsd = .xsd\DMLExtendedProcess.xsd
+		.xsd\DMLExtendedRegistration.xsd = .xsd\DMLExtendedRegistration.xsd
+		.xsd\DMLExtendedReportModel.xsd = .xsd\DMLExtendedReportModel.xsd
+		.xsd\DMLExtendedSecurityTask.xsd = .xsd\DMLExtendedSecurityTask.xsd
+		.xsd\DMLForm.xsd = .xsd\DMLForm.xsd
+		.xsd\DMLGadget.xsd = .xsd\DMLGadget.xsd
+		.xsd\DMLGlobalCommand.xsd = .xsd\DMLGlobalCommand.xsd
+		.xsd\DMLGlobalFilter.xsd = .xsd\DMLGlobalFilter.xsd
+		.xsd\DMLIdentityProvider.xsd = .xsd\DMLIdentityProvider.xsd
+		.xsd\DMLInterfaceModel.xsd = .xsd\DMLInterfaceModel.xsd
+		.xsd\DMLJsonSchema.xsd = .xsd\DMLJsonSchema.xsd
+		.xsd\DMLMenu.xsd = .xsd\DMLMenu.xsd
+		.xsd\DMLMessageCode.xsd = .xsd\DMLMessageCode.xsd
+		.xsd\DMLMigration.xsd = .xsd\DMLMigration.xsd
+		.xsd\DMLModule.xsd = .xsd\DMLModule.xsd
+		.xsd\DMLOptions.xsd = .xsd\DMLOptions.xsd
+		.xsd\DMLProcess.xsd = .xsd\DMLProcess.xsd
+		.xsd\DMLProjectionEntityModel.xsd = .xsd\DMLProjectionEntityModel.xsd
+		.xsd\DMLRegistration.xsd = .xsd\DMLRegistration.xsd
+		.xsd\DMLReportModel.xsd = .xsd\DMLReportModel.xsd
+		.xsd\DMLResource.xsd = .xsd\DMLResource.xsd
+		.xsd\DMLRuntimeApplication.xsd = .xsd\DMLRuntimeApplication.xsd
+		.xsd\DMLSecurityOperation.xsd = .xsd\DMLSecurityOperation.xsd
+		.xsd\DMLSecurityTag.xsd = .xsd\DMLSecurityTag.xsd
+		.xsd\DMLSecurityTask.xsd = .xsd\DMLSecurityTask.xsd
+		.xsd\DMLSyncEntityModel.xsd = .xsd\DMLSyncEntityModel.xsd
+		.xsd\DMLVirtualEntityModel.xsd = .xsd\DMLVirtualEntityModel.xsd
+		.xsd\DMLWebHook.xsd = .xsd\DMLWebHook.xsd
+		.xsd\ToolTemplateCatalog.xsd = .xsd\ToolTemplateCatalog.xsd
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cloud.ERP.Accounting", "Cloud.ERP.Accounting", "{0499B23B-29B9-4393-800A-0440A9018FBC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigBang.App.Cloud.ERP.Accounting", "src\BigBang.App.Cloud.ERP.Accounting\BigBang.App.Cloud.ERP.Accounting.csproj", "{67DCCC23-191D-462B-B355-01E08E27E6AE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigBang.App.Cloud.ERP.Accounting.DML", "src\BigBang.App.Cloud.ERP.Accounting.DML\BigBang.App.Cloud.ERP.Accounting.DML.csproj", "{681095A7-A838-456D-A8FD-82FAE15CFF14}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigBang.App.Cloud.ERP.Accounting.Migrations", "src\BigBang.App.Cloud.ERP.Accounting.Migrations\BigBang.App.Cloud.ERP.Accounting.Migrations.csproj", "{8D6CEB94-A4C7-4EBD-9368-3A0240D14657}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B3827765-F871-472E-8B22-8176119A74DF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cloud.ERP.Accounting.Tests", "test\Cloud.ERP.Accounting.Tests\Cloud.ERP.Accounting.Tests.csproj", "{63743FED-5ED6-4798-86FE-EC307B86FB14}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B3827765-F871-472E-8B22-8176119A85EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{20DFDBA4-2C10-48BB-9E29-7EF07DBBB334}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20DFDBA4-2C10-48BB-9E29-7EF07DBBB334}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20DFDBA4-2C10-48BB-9E29-7EF07DBBB334}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20DFDBA4-2C10-48BB-9E29-7EF07DBBB334}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67DCCC23-191D-462B-B355-01E08E27E6AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67DCCC23-191D-462B-B355-01E08E27E6AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67DCCC23-191D-462B-B355-01E08E27E6AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67DCCC23-191D-462B-B355-01E08E27E6AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{681095A7-A838-456D-A8FD-82FAE15CFF14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{681095A7-A838-456D-A8FD-82FAE15CFF14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{681095A7-A838-456D-A8FD-82FAE15CFF14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{681095A7-A838-456D-A8FD-82FAE15CFF14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D6CEB94-A4C7-4EBD-9368-3A0240D14657}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D6CEB94-A4C7-4EBD-9368-3A0240D14657}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D6CEB94-A4C7-4EBD-9368-3A0240D14657}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D6CEB94-A4C7-4EBD-9368-3A0240D14657}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63743FED-5ED6-4798-86FE-EC307B86FB14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63743FED-5ED6-4798-86FE-EC307B86FB14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63743FED-5ED6-4798-86FE-EC307B86FB14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63743FED-5ED6-4798-86FE-EC307B86FB14}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{20DFDBA4-2C10-48BB-9E29-7EF07DBBB334} = {B3827765-F871-472E-8B22-8176119A74DF}
+		{0499B23B-29B9-4393-800A-0440A9018FBC} = {B3827765-F871-472E-8B22-8176119A74DF}
+		{67DCCC23-191D-462B-B355-01E08E27E6AE} = {0499B23B-29B9-4393-800A-0440A9018FBC}
+		{681095A7-A838-456D-A8FD-82FAE15CFF14} = {0499B23B-29B9-4393-800A-0440A9018FBC}
+		{8D6CEB94-A4C7-4EBD-9368-3A0240D14657} = {0499B23B-29B9-4393-800A-0440A9018FBC}
+		{63743FED-5ED6-4798-86FE-EC307B86FB14} = {B3827765-F871-472E-8B22-8176119A85EF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A65A38F7-CADA-4FE9-84AB-F66D2D2A17A3}
+	EndGlobalSection
+EndGlobal

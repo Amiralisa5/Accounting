@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.bigbang.io/dml/extendedRegistration" xmlns:bb="http://www.bigbang.io/dml/extendedRegistration">
+  <xsd:element name="configuration">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="extendedRegistration" type="bb:DMLExtendedRegistration" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="DMLExtendedRegistration">
+    <xsd:all>
+      <xsd:element name="fields">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="username" type="bb:DMLExtendedRegistrationUsernameField" />
+            <xsd:element name="password" type="bb:DMLExtendedRegistrationPasswordField" />
+            <xsd:element name="name" type="bb:DMLExtendedRegistrationNameField" />
+            <xsd:element name="email" type="bb:DMLExtendedRegistrationEmailField" />
+            <xsd:element name="phone" type="bb:DMLExtendedRegistrationPhoneField" />
+            <xsd:element name="custom" type="bb:DMLExtendedRegistrationCustomField" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DMLExtendedRegistrationUsernameField">
+    <xsd:all>
+      <xsd:element name="verification" type="bb:DMLExtendedRegistrationFieldVerification" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="canChangeInOptions" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isRetype" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isPassword" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLExtendedRegistrationFieldVerification">
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="canChangeInOptions" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="providerType" use="optional" type="xsd:string" />
+    <xsd:attribute name="type" type="bb:DMLVerificationType" use="optional" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLVerificationType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="OneStep" />
+      <xsd:enumeration value="TwoSteps" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLExtendedRegistrationPasswordField">
+    <xsd:all>
+      <xsd:element name="verification" type="bb:DMLExtendedRegistrationFieldVerification" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="canChangeInOptions" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isRetype" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isPassword" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLExtendedRegistrationNameField">
+    <xsd:all>
+      <xsd:element name="verification" type="bb:DMLExtendedRegistrationFieldVerification" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="canChangeInOptions" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isRetype" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isPassword" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLExtendedRegistrationEmailField">
+    <xsd:all>
+      <xsd:element name="verification" type="bb:DMLExtendedRegistrationFieldVerification" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="canChangeInOptions" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isRetype" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isPassword" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLExtendedRegistrationPhoneField">
+    <xsd:all>
+      <xsd:element name="verification" type="bb:DMLExtendedRegistrationFieldVerification" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="canChangeInOptions" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isRetype" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isPassword" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLExtendedRegistrationCustomField">
+    <xsd:all>
+      <xsd:element name="verification" type="bb:DMLExtendedRegistrationFieldVerification" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="canChangeInOptions" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isRetype" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isPassword" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:simpleType name="BBDuration">
+    <xsd:annotation>
+      <xsd:documentation>pattern is (D.HH:MM:SS | D) In which D is days, HH is 2-digit 00-24 hour, MM is 2-digit 00-59 minute and SS is 2-digit second 00-59</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="^\d+|(\d+\.)?([01]\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

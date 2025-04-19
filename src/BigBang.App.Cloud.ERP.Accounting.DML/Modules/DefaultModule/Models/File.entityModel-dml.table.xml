@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/entityModel/table">
+  <table schemaOwner="dbo" name="File" primaryColumnName="Id">
+    <columns>
+      <column Name="Id" typeName="uniqueidentifier" isComputed="false" isAutoNumber="false" netType="System.Guid" allowNull="false" />
+      <column Name="Content" typeName="varbinary" isComputed="false" isAutoNumber="false" length="-1" netType="System.Byte[]" allowNull="true" />
+      <column Name="FileName" typeName="varchar" isComputed="false" isAutoNumber="false" length="64" netType="System.String" allowNull="false" />
+      <column Name="Size" typeName="int" scale="0" precision="10" isComputed="false" isAutoNumber="false" netType="System.Int32" allowNull="false" />
+      <column Name="CreatedDate" typeName="datetime" isComputed="false" isAutoNumber="false" netType="System.DateTime" allowNull="false" defaultValue="(getdate())" />
+      <column Name="EntityOwnerId" typeName="uniqueidentifier" isComputed="false" isAutoNumber="false" netType="System.Guid" allowNull="true" />
+      <column Name="BusinessId" typeName="uniqueidentifier" isComputed="false" isAutoNumber="false" netType="System.Guid" allowNull="false" />
+      <column Name="FileConfigId" typeName="int" scale="0" precision="10" isComputed="false" isAutoNumber="false" netType="System.Int32" allowNull="false" />
+    </columns>
+    <relations>
+      <relation targetTable="Business" sourceColumn="BusinessId" deleteRule="NONE" />
+      <relation targetTable="FileConfig" sourceColumn="FileConfigId" deleteRule="NONE" />
+    </relations>
+  </table>
+</configuration>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/registration">
+	<registration>
+		<fields>
+			<phone isActive="true" displayName="شماره موبایل" allowNull="false"></phone>
+			<custom name="FirstName" displayName="نام"  allowNull="false"></custom>
+			<custom name="LastName" displayName="نام خانوادگی"  allowNull="false"></custom>
+			<custom name="BusinessName" displayName="نام کسب و کار"  allowNull="false"></custom>
+		</fields>
+	</registration>
+</configuration>

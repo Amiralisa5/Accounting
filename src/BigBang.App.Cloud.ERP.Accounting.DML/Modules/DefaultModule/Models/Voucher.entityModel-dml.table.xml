@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/entityModel/table">
+  <table schemaOwner="dbo" name="Voucher" primaryColumnName="Id">
+    <columns>
+      <column Name="Id" typeName="uniqueidentifier" isComputed="false" isAutoNumber="false" netType="System.Guid" allowNull="false" />
+      <column Name="Number" typeName="varchar" isComputed="false" isAutoNumber="false" length="16" netType="System.String" allowNull="false" />
+      <column Name="Description" typeName="nvarchar" isComputed="false" isAutoNumber="false" length="255" netType="System.String" allowNull="true" />
+      <column Name="CreationDate" typeName="datetime" isComputed="false" isAutoNumber="false" netType="System.DateTime" allowNull="false" />
+      <column Name="EffectiveDate" typeName="datetime" isComputed="false" isAutoNumber="false" netType="System.DateTime" allowNull="false" />
+      <column Name="Type" typeName="tinyint" scale="0" precision="3" isComputed="false" isAutoNumber="false" netType="System.Byte" allowNull="false" />
+      <column Name="Title" typeName="nvarchar" isComputed="false" isAutoNumber="false" length="128" netType="System.String" allowNull="false" />
+      <column Name="Amount" typeName="bigint" scale="0" precision="19" isComputed="false" isAutoNumber="false" netType="System.Int64" allowNull="false" />
+      <column Name="FiscalPeriodId" typeName="uniqueidentifier" isComputed="false" isAutoNumber="false" netType="System.Guid" allowNull="false" />
+      <column Name="VoucherTemplateId" typeName="tinyint" scale="0" precision="3" isComputed="false" isAutoNumber="false" netType="System.Byte" allowNull="false" />
+    </columns>
+    <relations>
+      <relation targetTable="FiscalPeriod" sourceColumn="FiscalPeriodId" deleteRule="NONE" />
+      <relation targetTable="VoucherTemplate" sourceColumn="VoucherTemplateId" deleteRule="NONE" />
+    </relations>
+  </table>
+</configuration>

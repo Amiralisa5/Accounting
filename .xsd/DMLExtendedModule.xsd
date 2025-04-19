@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.bigbang.io/dml/extendedModule" xmlns:bb="http://www.bigbang.io/dml/extendedModule">
+  <xsd:element name="configuration">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="extendedModule" type="bb:DMLExtendedModule" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="DMLExtendedModule">
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:simpleType name="BBDuration">
+    <xsd:annotation>
+      <xsd:documentation>pattern is (D.HH:MM:SS | D) In which D is days, HH is 2-digit 00-24 hour, MM is 2-digit 00-59 minute and SS is 2-digit second 00-59</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="^\d+|(\d+\.)?([01]\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

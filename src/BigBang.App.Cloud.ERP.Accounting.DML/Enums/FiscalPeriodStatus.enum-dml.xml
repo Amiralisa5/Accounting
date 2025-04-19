@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/enum">
+	<enum name="FiscalPeriodStatus">
+		<members>
+			<member name="Inactive" displayName="غیرفعال" value="1" />
+			<member name="Active" displayName="فعال" value="2" />
+			<member name="Closed" displayName="بسته شده" value="3" />
+		</members>
+	</enum>
+</configuration>

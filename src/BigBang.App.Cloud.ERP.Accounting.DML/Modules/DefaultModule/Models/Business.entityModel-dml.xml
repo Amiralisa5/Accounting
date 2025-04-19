@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/entityModel">
+	<entityModel name="ACC_Business" moduleName="DefaultModule">
+		<propertiesCollection>
+			<properties>
+				<primitive name="Id" order="1" />
+				<primitive name="Name" order="2" />
+				<primitive name="PodBusinessId" order="3" />
+				<reference name="Owner" order="3" />
+			</properties>
+		</propertiesCollection>
+	</entityModel>
+</configuration>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.bigbang.io/dml/options" xmlns:bb="http://www.bigbang.io/dml/options">
+  <xsd:element name="configuration">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="options" type="bb:DMLOptions" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="DMLOptions">
+    <xsd:all>
+      <xsd:element name="category" type="bb:DMLOptionsCategory" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+    </xsd:all>
+    <xsd:attribute name="target" use="required" type="xsd:string">
+      <xsd:annotation>
+        <xsd:documentation>Target virtual entity model</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="mode" type="bb:DMLOptionMode" use="required" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLOptionMode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Global" />
+      <xsd:enumeration value="User" />
+      <xsd:enumeration value="Actor" />
+      <xsd:enumeration value="VirtualEntity" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLOptionsCategory">
+    <xsd:all>
+      <xsd:element name="category" type="bb:DMLOptionsCategory" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+  </xsd:complexType>
+  <xsd:simpleType name="BBDuration">
+    <xsd:annotation>
+      <xsd:documentation>pattern is (D.HH:MM:SS | D) In which D is days, HH is 2-digit 00-24 hour, MM is 2-digit 00-59 minute and SS is 2-digit second 00-59</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="^\d+|(\d+\.)?([01]\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

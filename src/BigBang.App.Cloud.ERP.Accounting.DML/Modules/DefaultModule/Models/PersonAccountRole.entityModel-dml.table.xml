@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/entityModel/table">
+  <table schemaOwner="dbo" name="PersonAccountRole" primaryColumnName="Id">
+    <columns>
+      <column Name="Id" typeName="uniqueidentifier" isComputed="false" isAutoNumber="false" netType="System.Guid" allowNull="false" />
+      <column Name="PersonRoleTypeId" typeName="tinyint" scale="0" precision="3" isComputed="false" isAutoNumber="false" netType="System.Byte" allowNull="false" />
+      <column Name="PersonAccountId" typeName="uniqueidentifier" isComputed="false" isAutoNumber="false" netType="System.Guid" allowNull="false" />
+    </columns>
+    <relations>
+      <relation targetTable="PersonAccount" sourceColumn="PersonAccountId" deleteRule="CASCADE" />
+    </relations>
+  </table>
+</configuration>

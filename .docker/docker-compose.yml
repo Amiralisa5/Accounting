@@ -1,0 +1,37 @@
+version: '3.4'
+
+services:
+  host:
+    image: bigbang/cloud.erp.accounting
+    ports:
+      - "80:8080"
+      - "443:443"
+    volumes:
+      - ./certs:/certs
+    environment:
+      DB_DATA_SOURCE: "db"
+      DB_USER_ID: "sa"
+      DB_PASSWORD: "ChangeMe!"
+      DB_INTEGRATED_SECURITY: "false"
+      CACHE_HOST: "redis"
+      ASPNETCORE_URLS: "https://+443"
+      ASPNET_HTTPS_PORT: "443"
+      ASPNETCORE_Kestrel__Certificates__Default__Password: "123456"
+      ASPNETCORE_Kestrel__Certificates__Default__Path: "/certs/certificate.pfx"
+
+    depends_on:
+      - db
+    command: sh -c 'wait-for-it.sh db:1433 -t 30 -- dotnet /app/Host.dll'
+
+  db:
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "ChangeMe!"
+      ACCEPT_EULA: "Y"
+    volumes:  
+      - sql_data:/var/opt/mssql 
+
+volumes:
+  sql_data:

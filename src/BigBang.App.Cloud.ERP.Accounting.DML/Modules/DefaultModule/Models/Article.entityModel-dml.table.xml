@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/entityModel/table">
+  <table schemaOwner="dbo" name="Article" primaryColumnName="Id">
+    <columns>
+      <column Name="Id" typeName="uniqueidentifier" isComputed="false" isAutoNumber="false" netType="System.Guid" allowNull="false" />
+      <column Name="LookupId" typeName="uniqueidentifier" isComputed="false" isAutoNumber="false" netType="System.Guid" allowNull="true" />
+      <column Name="Quantity" typeName="int" scale="0" precision="10" isComputed="false" isAutoNumber="false" netType="System.Int32" allowNull="true" />
+      <column Name="Fee" typeName="bigint" scale="0" precision="19" isComputed="false" isAutoNumber="false" netType="System.Int64" allowNull="true" />
+      <column Name="Amount" typeName="bigint" scale="0" precision="19" isComputed="false" isAutoNumber="false" netType="System.Int64" allowNull="false" />
+      <column Name="Currency" typeName="tinyint" scale="0" precision="3" isComputed="false" isAutoNumber="false" netType="System.Byte" allowNull="false" />
+      <column Name="Type" typeName="tinyint" scale="0" precision="3" isComputed="false" isAutoNumber="false" netType="System.Byte" allowNull="false" />
+      <column Name="IsTransactionalOnly" typeName="bit" isComputed="false" isAutoNumber="false" netType="System.Boolean" allowNull="false" />
+      <column Name="AccountId" typeName="uniqueidentifier" isComputed="false" isAutoNumber="false" netType="System.Guid" allowNull="false" />
+      <column Name="VoucherId" typeName="uniqueidentifier" isComputed="false" isAutoNumber="false" netType="System.Guid" allowNull="false" />
+    </columns>
+    <relations>
+      <relation targetTable="Account" sourceColumn="AccountId" deleteRule="NONE" />
+      <relation targetTable="Voucher" sourceColumn="VoucherId" deleteRule="CASCADE" />
+    </relations>
+  </table>
+</configuration>

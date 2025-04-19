@@ -1,0 +1,66 @@
+﻿<Project>
+
+  <PropertyGroup>
+    <Version>0.0.0.0</Version>
+    <Product>Cloud.ERP.Accounting</Product>
+    <Copyright>Copyright ©2015-$([System.DateTime]::Now.ToString("yyyy"))</Copyright>
+    <Company>BigBang</Company>
+  </PropertyGroup>
+
+  <PropertyGroup>
+      <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <BigBangRootDirectory>$([System.Text.RegularExpressions.Regex]::Match("$(MSBuildProjectDirectory)", "(?&lt;Root&gt;.*)src\\|(?&lt;Root&gt;.*)src/").Groups["Root"].Value)</BigBangRootDirectory>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PackageOutputPath>$(BigBangRootDirectory)$temp/.nuget</PackageOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>DynamicProxyGenAssembly2</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+
+  <ItemGroup Condition="!$([System.Text.RegularExpressions.Regex]::IsMatch('$(ProjectName)', '(DML|Migrations)$'))">
+    <Reference Include="$(BigBangRootDirectory).bigbang\domains\*.Domain.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="**\Application.config" />
+    <EmbeddedResource Include="**\Application.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="**\*-dml.xml" />
+    <None Remove="**\*-dml.resources\*" />
+    <EmbeddedResource Include="**\*-dml.xml" />
+    <EmbeddedResource Include="**\*-dml.*.xml">
+      <DependentUpon>$([System.Text.RegularExpressions.Regex]::Replace('%(Filename)', '[.][^.]*$', '.xml'))</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="**\*-dml.resources\*" />
+  </ItemGroup>
+  
+  <ItemGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(ProjectName)', 'Migrations$'))">
+    <None Remove="**\*.sql" />
+    <EmbeddedResource Include="**\*.sql" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(ProjectName)', '^BigBang.App')) And !$([System.Text.RegularExpressions.Regex]::IsMatch('$(ProjectName)', 'DML$'))" >
+    <None Remove="**\*.js" />
+    <None Remove="**\*.html" />
+    <None Remove="**\*.css" />
+    <EmbeddedResource Include="**\*.js">
+      <DependentUpon Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('%(Filename)', '[.][^.]*$'))">$([System.Text.RegularExpressions.Regex]::Replace('%(Filename)', '[.][^.]*$', '.js'))</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="**\*.html">
+      <DependentUpon>%(Filename).js</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="**\*.css">
+      <DependentUpon>%(Filename).js</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
+

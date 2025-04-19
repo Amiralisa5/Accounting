@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/entityModel">
+	<entityModel name="ACC_Voucher" moduleName="DefaultModule">
+		<propertiesCollection>
+			<properties>
+				<primitive name="Id" order="1" />
+				<primitive name="Number" order="2" />
+				<primitive name="Title" order="3" />
+				<primitive name="Description" order="4" />
+				<primitive name="CreationDate" order="5" />
+				<primitive name="EffectiveDate" order="6" />
+				<primitive name="Type" order="7" >
+					<propertyType>
+						<enum name="VoucherType"/>
+					</propertyType>
+				</primitive>
+				<primitive name="Amount" order="8" />
+				<reference name="FiscalPeriod" order="9" />
+				<reference name="VoucherTemplate" order="10" />
+			</properties>
+		</propertiesCollection>
+	</entityModel>
+</configuration>

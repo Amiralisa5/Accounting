@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.bigbang.io/bigbangconfig" xmlns:bb="http://schemas.bigbang.io/bigbangconfig">
+  <xsd:element name="configuration">
+    <xsd:complexType>
+      <xsd:all>
+        <xsd:element name="expression" type="bb:ExpressionConfig" minOccurs="0" maxOccurs="1" />
+        <xsd:element name="culture" type="bb:CultureConfig" minOccurs="0" maxOccurs="1" />
+        <xsd:element name="environment" type="bb:EnvironmentConfig" minOccurs="0" maxOccurs="1" />
+        <xsd:element name="identityProviders" type="bb:IdentityProvidersConfig" minOccurs="0" maxOccurs="1" />
+        <xsd:element name="organizationCache" type="bb:OrganizationCacheConfig" minOccurs="0" maxOccurs="1" />
+        <xsd:element name="powerBi" type="bb:PowerBiConfig" minOccurs="0" maxOccurs="1" />
+        <xsd:element name="serviceBus" type="bb:ServiceBusConfig" minOccurs="0" maxOccurs="1" />
+        <xsd:element name="trustedMidIps" type="bb:TrustedMidIpsConfig" minOccurs="0" maxOccurs="1" />
+        <xsd:element name="userRegistration" type="bb:UserRegistrationActivationConfig" minOccurs="0" maxOccurs="1" />
+        <xsd:element name="logging" type="bb:LoggingConfig" minOccurs="0" maxOccurs="1" />
+        <xsd:element name="serverInfo" type="bb:ServerInfoConfig" minOccurs="0" maxOccurs="1" />
+      </xsd:all>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="ExpressionConfig">
+    <xsd:all>
+      <xsd:element name="expressionService" type="bb:ExpressionServiceConfig" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="jsLibraries" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="jsLibrary" type="bb:JsLibraryConfig" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="resourceJsLibraries" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="resourceJsLibrary" type="bb:ResourceJsLibraryConfig" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="ExpressionServiceConfig">
+    <xsd:attribute name="port" use="optional" type="xsd:int" />
+    <xsd:attribute name="debugMode" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="JsLibraryConfig">
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="path" use="required" type="xsd:string" />
+    <xsd:attribute name="FullName" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="ResourceJsLibraryConfig">
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="assembly" use="required" type="xsd:string" />
+    <xsd:attribute name="resource" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="CultureConfig">
+    <xsd:attribute name="defaultCulture" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="EnvironmentConfig">
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="IdentityProvidersConfig">
+    <xsd:all>
+      <xsd:element name="providers" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="provider" type="bb:IdentityProviderConfig" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="IdentityProviderConfig">
+    <xsd:all>
+      <xsd:element name="scopes" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="scope" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="issuer" use="required" type="xsd:string" />
+    <xsd:attribute name="redirectUri" use="optional" type="xsd:string" />
+    <xsd:attribute name="clientId" use="required" type="xsd:string" />
+    <xsd:attribute name="clientSecret" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="OrganizationCacheConfig">
+    <xsd:attribute name="type" type="bb:OrganizationCacheType" use="required" />
+  </xsd:complexType>
+  <xsd:simpleType name="OrganizationCacheType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="None" />
+      <xsd:enumeration value="Lazy" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="PowerBiConfig">
+    <xsd:attribute name="address" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="ServiceBusConfig">
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="port" use="required" type="xsd:int" />
+    <xsd:attribute name="type" type="bb:ServiceBusType" use="optional" />
+  </xsd:complexType>
+  <xsd:simpleType name="ServiceBusType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Kafka" />
+      <xsd:enumeration value="ActiveMQ" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="TrustedMidIpsConfig">
+    <xsd:all>
+      <xsd:element name="cidrs">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="cidr" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="UserRegistrationActivationConfig">
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="LoggingConfig">
+    <xsd:attribute name="local" use="required" type="xsd:boolean" />
+    <xsd:attribute name="localLogPath" use="optional" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="port" use="optional" type="xsd:int" />
+  </xsd:complexType>
+  <xsd:complexType name="ServerInfoConfig">
+    <xsd:all>
+      <xsd:element name="hostInfo" type="bb:HostInfoConfig" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="defaultUser" type="bb:DefaultUserConfig" />
+      <xsd:element name="cors" type="bb:CorsConfig" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="session" type="bb:SessionConfig" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="referrerPolicy" type="bb:ReferrerPolicyConfig" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="virtualDirectoryName" use="optional" type="xsd:string" />
+    <xsd:attribute name="useHsts" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="HostInfoConfig">
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="port" use="required" type="xsd:int" />
+  </xsd:complexType>
+  <xsd:complexType name="DefaultUserConfig">
+    <xsd:attribute name="username" use="required" type="xsd:string" />
+    <xsd:attribute name="password" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="CorsConfig">
+    <xsd:all>
+      <xsd:element name="origins">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="origin" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="SessionConfig">
+    <xsd:attribute name="secretKey" use="required" type="xsd:string" />
+    <xsd:attribute name="durationInHour" use="optional" type="xsd:int" />
+  </xsd:complexType>
+  <xsd:complexType name="ReferrerPolicyConfig">
+    <xsd:attribute name="policy" type="bb:ReferrerPolicyType" use="required" />
+  </xsd:complexType>
+  <xsd:simpleType name="ReferrerPolicyType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="NoReferrer" />
+      <xsd:enumeration value="SameOrigin" />
+      <xsd:enumeration value="StrictOrigin" />
+      <xsd:enumeration value="StrictOriginWhenCrossOrigin" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="BBDuration">
+    <xsd:annotation>
+      <xsd:documentation>pattern is (D.HH:MM:SS | D) In which D is days, HH is 2-digit 00-24 hour, MM is 2-digit 00-59 minute and SS is 2-digit second 00-59</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="^\d+|(\d+\.)?([01]\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

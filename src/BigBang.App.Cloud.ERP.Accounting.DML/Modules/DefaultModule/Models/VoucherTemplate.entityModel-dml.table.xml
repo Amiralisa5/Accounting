@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/entityModel/table">
+  <table schemaOwner="dbo" name="VoucherTemplate" primaryColumnName="Id">
+    <columns>
+      <column Name="Id" typeName="tinyint" scale="0" precision="3" isComputed="false" isAutoNumber="false" netType="System.Byte" allowNull="false" />
+      <column Name="Name" typeName="varchar" isComputed="false" isAutoNumber="false" length="32" netType="System.String" allowNull="false" />
+      <column Name="DisplayName" typeName="nvarchar" isComputed="false" isAutoNumber="false" length="32" netType="System.String" allowNull="false" />
+      <column Name="TitleFormat" typeName="nvarchar" isComputed="false" isAutoNumber="false" length="64" netType="System.String" allowNull="false" />
+    </columns>
+  </table>
+</configuration>

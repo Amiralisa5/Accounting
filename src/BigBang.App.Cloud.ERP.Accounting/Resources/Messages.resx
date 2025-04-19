@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountTree_Assets" xml:space="preserve">
+    <value>دارایی</value>
+  </data>
+  <data name="AccountTree_Bank" xml:space="preserve">
+    <value>بانک</value>
+  </data>
+  <data name="AccountTree_GeneralEquity" xml:space="preserve">
+    <value>سرمایه</value>
+  </data>
+  <data name="AccountTree_Expense" xml:space="preserve">
+    <value>هزینه</value>
+  </data>
+  <data name="AccountTree_Food" xml:space="preserve">
+    <value>غذا</value>
+  </data>
+  <data name="AccountTree_Fund" xml:space="preserve">
+    <value>صندوق</value>
+  </data>
+  <data name="AccountTree_ProductInventory" xml:space="preserve">
+    <value>موجودی کالا</value>
+  </data>
+  <data name="AccountTree_ProductSell" xml:space="preserve">
+    <value>فروش کالا</value>
+  </data>
+  <data name="AccountTree_Liabilities" xml:space="preserve">
+    <value>بدهی</value>
+  </data>
+  <data name="AccountTree_LiabilitiesToOthers" xml:space="preserve">
+    <value>بدهی به دیگران</value>
+  </data>
+  <data name="AccountTree_Payment" xml:space="preserve">
+    <value>پرداخت</value>
+  </data>
+  <data name="AccountTree_Buy" xml:space="preserve">
+    <value>خرید</value>
+  </data>
+  <data name="AccountTree_ReceivableFromOthers" xml:space="preserve">
+    <value>طلب از دیگران</value>
+  </data>
+  <data name="AccountTree_Rent" xml:space="preserve">
+    <value>اجاره</value>
+  </data>
+  <data name="AccountTree_Revenue" xml:space="preserve">
+    <value>درآمد</value>
+  </data>
+  <data name="AccountTree_Root" xml:space="preserve">
+    <value>درخت حساب</value>
+  </data>
+  <data name="AccountTree_Salary" xml:space="preserve">
+    <value>حقوق</value>
+  </data>
+  <data name="AccountTree_ServicesProvided" xml:space="preserve">
+    <value>ارائه خدمات</value>
+  </data>
+  <data name="AccountTree_Transport" xml:space="preserve">
+    <value>حمل و نقل</value>
+  </data>
+  <data name="AccountTree_Withdraw" xml:space="preserve">
+    <value>برداشت</value>
+  </data>
+  <data name="Entity_Account" xml:space="preserve">
+    <value>حساب</value>
+  </data>
+  <data name="Entity_FiscalPeriod" xml:space="preserve">
+    <value>دوره مالی</value>
+  </data>
+  <data name="Error_AccountForTemplateIsNotValid" xml:space="preserve">
+    <value>حساب وارد شده برای تمپلیت مورد نظر معتبر نیست</value>
+  </data>
+  <data name="Error_SumOfDebitAndCreditShouldBeEqual" xml:space="preserve">
+    <value>مجموع مبالغ بدهکار و بستانکار باید برابر باشد</value>
+  </data>
+  <data name="Error_ShouldBeGreaterThan" xml:space="preserve">
+    <value>{0} باید بزرگتر از {1} باشد</value>
+  </data>
+  <data name="Error_ArticleTypeIsNotValid" xml:space="preserve">
+    <value>تایپ آرتیکل وارد شده معتبر نیست</value>
+  </data>
+  <data name="Error_EffectiveDateShouldBeInRangeOfFiscalPeriodDate" xml:space="preserve">
+    <value>تاریخ سند باید در بازه دوره مالی باشد</value>
+  </data>
+  <data name="Error_ShouldBeNull" xml:space="preserve">
+    <value>{0} نباید مقدار داشته باشد</value>
+  </data>
+  <data name="Entity_BankAccount" xml:space="preserve">
+    <value>حساب بانکی</value>
+  </data>
+  <data name="Entity_Bussiness" xml:space="preserve">
+    <value>کسب و کار</value>
+  </data>
+  <data name="Error_ExactLengthShouldBe" xml:space="preserve">
+    <value>{0} دقیقا باید {1} رقم باشد</value>
+  </data>
+  <data name="Error_FieldRequired" xml:space="preserve">
+    <value>وارد کردن {0} اجباری است</value>
+  </data>
+  <data name="Label_FirstName" xml:space="preserve">
+    <value>نام </value>
+  </data>
+  <data name="Error_MaximumLengthShouldBe" xml:space="preserve">
+    <value>{0} حداکثر باید {1} کاراکتر باشد</value>
+  </data>
+  <data name="Label_LastName" xml:space="preserve">
+    <value>نام خانوادگی </value>
+  </data>
+  <data name="Error_MobileNumberShouldBeElevenDigits" xml:space="preserve">
+    <value>شماره موبایل باید 11 رقم باشد</value>
+  </data>
+  <data name="Error_ShouldNotBeEmpty" xml:space="preserve">
+    <value>{0} نباید خالی باشد</value>
+  </data>
+  <data name="Error_ShouldNotBeNull" xml:space="preserve">
+    <value>{0} باید مقدار داشته باشد</value>
+  </data>
+  <data name="Error_TemplateValueIsNotValid" xml:space="preserve">
+    <value>تمپلیت سند وارد شده معتبر نیست</value>
+  </data>
+  <data name="Label_AccountId" xml:space="preserve">
+    <value>شناسه حساب</value>
+  </data>
+  <data name="Label_Amount" xml:space="preserve">
+    <value>مبلغ</value>
+  </data>
+  <data name="Label_MobileNumber" xml:space="preserve">
+    <value>شماره موبایل</value>
+  </data>
+  <data name="Label_BusinessName" xml:space="preserve">
+    <value>نام کسب و کار</value>
+  </data>
+  <data name="Label_CardNumber" xml:space="preserve">
+    <value>شماره کارت</value>
+  </data>
+  <data name="Label_HolderName" xml:space="preserve">
+    <value>دارنده حساب</value>
+  </data>
+  <data name="Label_OwnerName" xml:space="preserve">
+    <value>صاحب کسب و کار</value>
+  </data>
+  <data name="Label_VoucherArticles" xml:space="preserve">
+    <value>آرتیکل سند</value>
+  </data>
+  <data name="Label_VoucherDescription" xml:space="preserve">
+    <value>توضیحات سند</value>
+  </data>
+  <data name="Label_VoucherEffectiveDate" xml:space="preserve">
+    <value>تاریخ سند</value>
+  </data>
+  <data name="Label_ShebaNumber" xml:space="preserve">
+    <value>شماره شبا</value>
+  </data>
+  <data name="Title_FiscalYear" xml:space="preserve">
+    <value>سال مالی {0}</value>
+  </data>
+  <data name="Error_EntityCantBeDeletedDueToHavingVoucher" xml:space="preserve">
+    <value>به دلیل ثبت سند {0} قابل حذف نیست</value>
+  </data>
+  <data name="Entity_PersonAccount" xml:space="preserve">
+    <value>شخص</value>
+  </data>
+  <data name="Error_EntityNotFound" xml:space="preserve">
+    <value>{0} یافت نشد</value>
+  </data>
+  <data name="Label_Lookup" xml:space="preserve">
+    <value>حساب تفصیلی</value>
+  </data>
+  <data name="File_InvalidFileConfig" xml:space="preserve">
+    <value>کانفیگ فایل نامعتبر است</value>
+  </data>
+  <data name="File_InvalidFileFormat" xml:space="preserve">
+    <value>فرمت فایل نامتعبر است</value>
+  </data>
+  <data name="File_InvalidFileName" xml:space="preserve">
+    <value>نام فایل نامعتبر است</value>
+  </data>
+  <data name="File_InvalidFileSizeRange" xml:space="preserve">
+    <value>حداقل سایز میتواند{0}  و حداکثر میتواند {1} باشد</value>
+  </data>
+  <data name="Label_File" xml:space="preserve">
+    <value>فایل</value>
+  </data>
+  <data name="Label_FileName" xml:space="preserve">
+    <value>نام فایل</value>
+  </data>
+  <data name="Entity_Voucher" xml:space="preserve">
+    <value>سند</value>
+  </data>
+  <data name="Entity_Product" xml:space="preserve">
+    <value>کالا</value>
+  </data>
+  <data name="Label_ProductName" xml:space="preserve">
+    <value>نام کالا</value>
+  </data>
+  <data name="Label_Stock" xml:space="preserve">
+    <value>موجودی کالا</value>
+  </data>
+  <data name="Label_SuggestedSellPrice" xml:space="preserve">
+    <value>قیمت پیشنهادی فروش</value>
+  </data>
+  <data name="Label_BuyPrice" xml:space="preserve">
+    <value>قیمت خرید</value>
+  </data>
+  <data name="Error_ProducExists" xml:space="preserve">
+    <value>کالا تکراری است</value>
+  </data>
+  <data name="Label_Balance" xml:space="preserve">
+    <value>موجودی حساب</value>
+  </data>
+  <data name="Entity_Owner" xml:space="preserve">
+    <value>صاحب کسب و کار</value>
+  </data>
+  <data name="Error_BankAccountBalanceIsNotEnough" xml:space="preserve">
+    <value>موجودی حساب بانکی کافی نیست</value>
+  </data>
+  <data name="Label_Fee" xml:space="preserve">
+    <value>قیمت واحد</value>
+  </data>
+  <data name="Label_Quantity" xml:space="preserve">
+    <value>تعداد</value>
+  </data>
+  <data name="Error_ProductIsNotInStock" xml:space="preserve">
+    <value>موجودی کالا کمتر از میزان درخواست شده است</value>
+  </data>
+  <data name="Error_CurencyIsNotValid" xml:space="preserve">
+    <value>واحد پولی وارد شده معتبر نیست</value>
+  </data>
+  <data name="Label_Bank" xml:space="preserve">
+    <value>بانک</value>
+  </data>
+  <data name="Error_ShouldNotBeNegative" xml:space="preserve">
+    <value>{0} نباید منفی باشد</value>
+  </data>
+  <data name="Error_FromDateToDateIsNotValid" xml:space="preserve">
+    <value>تاریخ از باید کوچکتر مساوی تاریخ تا باشد</value>
+  </data>
+  <data name="Label_PageNumber" xml:space="preserve">
+    <value>شماره صفحه</value>
+  </data>
+  <data name="Label_PageSize" xml:space="preserve">
+    <value>تعداد آیتم های صفحه</value>
+  </data>
+  <data name="VoucherTitle_AddProduct" xml:space="preserve">
+    <value>موجود در انبار</value>
+  </data>
+  <data name="Error_AccountNatureIsInvalid" xml:space="preserve">
+    <value>ماهیت حساب معتبر نیست</value>
+  </data>
+  <data name="Error_BankAccountShouldNotInvolved" xml:space="preserve">
+    <value>در خرید اقساطی بدون هزینه حمل، نباید پولی از حساب بانکی کسر شود</value>
+  </data>
+  <data name="Error_BankAccountWithdrawShouldEqualToTotalProductsAmount" xml:space="preserve">
+    <value>در خرید کالا با برداشت از بانک، پولی که از بانک برداشت میشود باید با مجموع کالاهای خریداری شده و هزینه ی حمل (در صورت وجود) برابر باشد</value>
+  </data>
+  <data name="Error_BankAccountWithdrawShouldEqualToTransportAmount" xml:space="preserve">
+    <value>در خرید اقساطی با هزینه حمل، پولی که از بانک برداشت میشود باید مساوی هزینه حمل باشد</value>
+  </data>
+  <data name="Error_IncorrectDistributionTransportCalculation" xml:space="preserve">
+    <value>توزیع هزینه حمل بر روی کالاها به درستی انجام نشده است</value>
+  </data>
+  <data name="Error_LiablitiesToOthersShouldEqualToTotalProductsAmount" xml:space="preserve">
+    <value>مبلغ حساب پرداختنی باید برابر با مجموع قیمت خرید خود کالاها باشد </value>
+  </data>
+  <data name="AccountTree_AdvanceReceipt" xml:space="preserve">
+    <value>پیش دریافت</value>
+  </data>
+  <data name="AccountTree_GeneralCostOfProductSold" xml:space="preserve">
+    <value>بهای تمام شده کالای فروش رفته</value>
+  </data>
+  <data name="AccountTree_AdvancePayment" xml:space="preserve">
+    <value>پیش پرداخت</value>
+  </data>
+  <data name="Error_InvalidAccountForCustomVoucher" xml:space="preserve">
+    <value>حساب وارد شده قابلیت ثبت سند دستی را ندارد</value>
+  </data>
+  <data name="AccountTree_SubsidiaryEquity" xml:space="preserve">
+    <value>سرمایه</value>
+  </data>
+  <data name="AccountTree_SubsidiaryCostOfProductSold" xml:space="preserve">
+    <value>بهای تمام شده کالای فروش رفته</value>
+  </data>
+  <data name="Error_ReceivableFromOthersDebitShouldBeEqualToReceivableFromOthersCredit" xml:space="preserve">
+    <value>مبلغ حساب دریافتنی بدهکار با مبلغ حساب دریافتنی بستانکار باید برابر باشد</value>
+  </data>
+  <data name="Error_ReceivableFromOthersShouldEqualToDepositToBank" xml:space="preserve">
+    <value>مبلغ حساب دریافتنی باید با مبلغ واریز به بانک برابر باشد</value>
+  </data>
+  <data name="Error_ReceivableFromOthersShouldEqualToTotalProductsAmount" xml:space="preserve">
+    <value>مبلغ حساب دریافتنی باید با مجموع قیمت فروش کالاها برابر باشد</value>
+  </data>
+  <data name="Error_SubsidiaryCostOfProductSoldShouldEqualToTotalProductAmount" xml:space="preserve">
+    <value>مبلغ بهای تمام شده کالای فروش رفته باید با مجموع مبلغ موجودی کالا برابر باشد</value>
+  </data>
+  <data name="Error_LookUpTypeIsNotValid" xml:space="preserve">
+    <value>نوع حساب تفصیلی معتبر نیست</value>
+  </data>
+  <data name="Error_BankAccountNotExist" xml:space="preserve">
+    <value>حساب بانک وجود ندارد</value>
+  </data>
+  <data name="Error_ArticlesAreNotValid" xml:space="preserve">
+    <value>تعداد آرتیکل های وارد شده معتبر نیست</value>
+  </data>
+  <data name="Error_BankNotExistInCreditSale" xml:space="preserve">
+    <value>در فروش نسیه، حساب بانک نباید وجود داشته باشد</value>
+  </data>
+  <data name="Error_FeeMultipliedByQuantityShouldEqualToAmount" xml:space="preserve">
+    <value>قیمت واحد ضربدر تعداد باید مساوی مبلغ باشد</value>
+  </data>
+  <data name="Label_PersonRole" xml:space="preserve">
+    <value>نقش</value>
+  </data>
+  <data name="Error_CannotAssigeBussinessOwnerRoleToAnotherPerson" xml:space="preserve">
+    <value>نقش صاحب کسب و کار را نمیتوان به شخص دیگری نسبت داد</value>
+  </data>
+  <data name="Error_CannotRemoveBussinessOwnerRoleForOwnerPersonAccount" xml:space="preserve">
+    <value>امکان حذف نقش صاحب کسب و کار برای صاحب کسب و کار وجود ندارد</value>
+  </data>
+  <data name="Error_BuisnessOwnerCannotBeDeleted" xml:space="preserve">
+    <value>صاحب کسب و کار قابل حذف نیست</value>
+  </data>
+  <data name="Error_SortByHaveToBeSellQuantity,SellAmount,CostAmountAndDifferenceAmount" xml:space="preserve">
+    <value>مرتب سازی فقط میتواند براساس تعداد کالا، مبلغ فروش،مبلغ تمام شده کالا و مابه التفاوت مبلغ تمام شده کالا و مبلغ فروش باشد</value>
+  </data>
+  <data name="Error_SortDirectionHaveToBeDescendingOrAscending" xml:space="preserve">
+    <value>مرتب سازی فقط میتواند صعودی یا نزولی باشد</value>
+  </data>
+  <data name="Label_Title" xml:space="preserve">
+    <value>عنوان</value>
+  </data>
+  <data name="Error_SortByHaveToBeTotalDebit_TotalCredit_Difference" xml:space="preserve">
+    <value>مرتب سازی فقط می تواند بر اساس مجموع بدهکارها، مجموع بستانکارها یا مابه التفاوت مجموع بدهکارها و بستانکارها باشد</value>
+  </data>
+  <data name="Error_WhitdrawFromBankShouldBeEqualToAdvancePayment" xml:space="preserve">
+    <value>برداشت از بانک باید با پیش پرداخت برابر باشد</value>
+  </data>
+</root>

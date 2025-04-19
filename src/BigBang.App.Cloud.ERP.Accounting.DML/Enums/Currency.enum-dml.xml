@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/enum">
+  <enum name="Currency">
+    <members>
+		<member name="Rial" displayName="ریال" value="1" />
+		<member name="Toman" displayName="تومان" value="2" />
+    </members>
+  </enum>
+</configuration>

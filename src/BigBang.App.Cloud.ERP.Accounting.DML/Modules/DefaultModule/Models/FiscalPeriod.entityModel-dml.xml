@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/entityModel">
+	<entityModel name="ACC_FiscalPeriod" moduleName="DefaultModule">
+		<propertiesCollection>
+			<properties>
+				<primitive name="Id" order="1" />
+				<primitive name="Title" order="2" />
+				<primitive name="FromDate" order="3" />
+				<primitive name="ToDate" order="4" />
+				<primitive name="Status" order="5" >
+					<propertyType>
+						<enum name="FiscalPeriodStatus"/>
+					</propertyType>
+				</primitive>
+				<reference name="Business" order="6" />
+			</properties>
+		</propertiesCollection>
+	</entityModel>
+</configuration>

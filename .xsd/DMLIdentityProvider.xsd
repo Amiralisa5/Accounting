@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.bigbang.io/dml/identityProvider" xmlns:bb="http://www.bigbang.io/dml/identityProvider">
+  <xsd:element name="configuration">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="identityProvider" type="bb:DMLIdentityProvider" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="DMLIdentityProvider">
+    <xsd:all>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="icon" type="bb:DMLIcon" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="provider">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="1">
+            <xsd:element name="oauth" type="bb:DMLOAuthIdentityProviderConfiguration" />
+            <xsd:element name="custom" type="bb:DMLCustomIdentityProviderConfiguration" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="foreColor" use="optional" type="xsd:string" />
+    <xsd:attribute name="backColor" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLIcon">
+    <xsd:choice>
+      <xsd:element name="simple" type="bb:DMLSimpleIcon" />
+      <xsd:element name="font" type="bb:DMLFontIcon" />
+      <xsd:element name="system" type="bb:DMLSystemIcon" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="DMLSimpleIcon">
+    <xsd:all>
+      <xsd:element name="content">
+        <xsd:complexType>
+          <xsd:attribute name="x-key" type="xsd:string" />
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DMLFontIcon">
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="color" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLSystemIcon">
+    <xsd:attribute name="type" type="bb:DMLSystemIconType" use="required" />
+    <xsd:attribute name="color" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLSystemIconType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Submit" />
+      <xsd:enumeration value="Cancel" />
+      <xsd:enumeration value="Apply" />
+      <xsd:enumeration value="Settings" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLOAuthIdentityProviderConfiguration">
+    <xsd:all>
+      <xsd:element name="scopes">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="scope" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="claims">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="username" type="bb:DMLIdentityProviderUsernameClaim" />
+            <xsd:element name="name" type="bb:DMLIdentityProviderNameClaim" />
+            <xsd:element name="phone" type="bb:DMLIdentityProviderPhoneClaim" />
+            <xsd:element name="email" type="bb:DMLIdentityProviderEmailClaim" />
+            <xsd:element name="picture" type="bb:DMLIdentityProviderPictureClaim" />
+            <xsd:element name="custom" type="bb:DMLIdentityProviderCustomClaim" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="issuer" use="required" type="xsd:string" />
+    <xsd:attribute name="redirectUri" use="optional" type="xsd:string" />
+    <xsd:attribute name="tokenSegment" use="required" type="xsd:string" />
+    <xsd:attribute name="authorizationSegment" use="required" type="xsd:string" />
+    <xsd:attribute name="configurationSegment" use="required" type="xsd:string" />
+    <xsd:attribute name="userInfoSegment" use="optional" type="xsd:string" />
+    <xsd:attribute name="clientId" use="required" type="xsd:string" />
+    <xsd:attribute name="clientSecret" use="optional" type="xsd:string" />
+    <xsd:attribute name="responseType" type="bb:DMLOAuthResponseType" use="required" />
+    <xsd:attribute name="redirectUriFormatter" use="optional" type="xsd:string" />
+    <xsd:attribute name="identityProviderTokenExtractorType" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLOAuthResponseType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Implicit" />
+      <xsd:enumeration value="Hybrid" />
+      <xsd:enumeration value="AuthorizationCode" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLIdentityProviderUsernameClaim">
+    <xsd:attribute name="key" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLIdentityProviderNameClaim">
+    <xsd:attribute name="key" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLIdentityProviderPhoneClaim">
+    <xsd:attribute name="key" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLIdentityProviderEmailClaim">
+    <xsd:attribute name="key" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLIdentityProviderPictureClaim">
+    <xsd:attribute name="key" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLIdentityProviderCustomClaim">
+    <xsd:attribute name="key" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLCustomIdentityProviderConfiguration" />
+  <xsd:simpleType name="BBDuration">
+    <xsd:annotation>
+      <xsd:documentation>pattern is (D.HH:MM:SS | D) In which D is days, HH is 2-digit 00-24 hour, MM is 2-digit 00-59 minute and SS is 2-digit second 00-59</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="^\d+|(\d+\.)?([01]\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

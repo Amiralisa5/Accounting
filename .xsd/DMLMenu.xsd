@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.bigbang.io/dml/menu" xmlns:bb="http://www.bigbang.io/dml/menu">
+  <xsd:element name="configuration">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="menu" type="bb:DMLMenu" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="DMLMenu">
+    <xsd:all>
+      <xsd:element name="modules" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="module" type="bb:DMLMenuModule" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="items" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="item" type="bb:DMLMenuItem" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DMLMenuModule">
+    <xsd:all>
+      <xsd:element name="icon" type="bb:DMLIcon" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="groups" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="group" type="bb:DMLMenuGroup" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="items" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="item" type="bb:DMLMenuItem" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="filterKeys" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="filterKey" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="title" use="required" type="xsd:string" />
+    <xsd:attribute name="site" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLIcon">
+    <xsd:choice>
+      <xsd:element name="simple" type="bb:DMLSimpleIcon" />
+      <xsd:element name="font" type="bb:DMLFontIcon" />
+      <xsd:element name="system" type="bb:DMLSystemIcon" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="DMLSimpleIcon">
+    <xsd:all>
+      <xsd:element name="content">
+        <xsd:complexType>
+          <xsd:attribute name="x-key" type="xsd:string" />
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DMLFontIcon">
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="color" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLSystemIcon">
+    <xsd:attribute name="type" type="bb:DMLSystemIconType" use="required" />
+    <xsd:attribute name="color" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLSystemIconType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Submit" />
+      <xsd:enumeration value="Cancel" />
+      <xsd:enumeration value="Apply" />
+      <xsd:enumeration value="Settings" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLMenuGroup">
+    <xsd:all>
+      <xsd:element name="icon" type="bb:DMLIcon" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="items" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="item" type="bb:DMLMenuItem" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="filterKeys" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="filterKey" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="title" use="required" type="xsd:string" />
+    <xsd:attribute name="site" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLMenuItem">
+    <xsd:all>
+      <xsd:element name="icon" type="bb:DMLIcon" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="action" type="bb:DMLMenuAction" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="items" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="item" type="bb:DMLMenuItem" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="filterKeys" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="filterKey" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="title" use="required" type="xsd:string" />
+    <xsd:attribute name="site" use="optional" type="xsd:string" />
+    <xsd:attribute name="merge" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLMenuAction">
+    <xsd:all>
+      <xsd:element name="badge" type="bb:DMLBadge" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="businessContext" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="businessContextItem" type="bb:DMLBusinessContextItem" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="type" type="bb:DMLMenuActionType" use="required" />
+    <xsd:attribute name="value" use="required" type="xsd:string" />
+    <xsd:attribute name="viewMode" type="bb:DMLMenuViewMode" use="optional" />
+    <xsd:attribute name="allowMultiple" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="aliasName" use="optional" type="xsd:string" />
+    <xsd:attribute name="autoOpen" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="ignoreFromRecentActivity" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLMenuActionType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Form" />
+      <xsd:enumeration value="Model" />
+      <xsd:enumeration value="CreateModel" />
+      <xsd:enumeration value="Report" />
+      <xsd:enumeration value="GlobalCommand" />
+      <xsd:enumeration value="CustomView" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DMLMenuViewMode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="MainMenu" />
+      <xsd:enumeration value="Sidebar" />
+      <xsd:enumeration value="All" />
+      <xsd:enumeration value="Nav" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLBadge">
+    <xsd:all>
+      <xsd:element name="configs" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="config" type="bb:DMLBadgeConfig" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="key" use="required" type="xsd:string" />
+    <xsd:attribute name="applicationName" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLBadgeConfig">
+    <xsd:all>
+      <xsd:element name="expression" minOccurs="1" maxOccurs="1" type="xsd:string" />
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLBusinessContextItem">
+    <xsd:all>
+      <xsd:element name="value" minOccurs="1" maxOccurs="1" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Expression for business context value</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:simpleType name="BBDuration">
+    <xsd:annotation>
+      <xsd:documentation>pattern is (D.HH:MM:SS | D) In which D is days, HH is 2-digit 00-24 hour, MM is 2-digit 00-59 minute and SS is 2-digit second 00-59</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="^\d+|(\d+\.)?([01]\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

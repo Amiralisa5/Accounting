@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Enums\AccountNature.enum-dml.xml" />
+    <None Remove="Enums\ArticleType.enum-dml.xml" />
+    <None Remove="Enums\FiscalPeriodStatus.enum-dml.xml" />
+    <None Remove="Enums\VoucherType.enum-dml.xml" />
+    <None Remove="Registrations\Registration.extendedRegistration-dml.xml" />
+    <None Remove="Registrations\Registration.registration-dml.xml" />
+  </ItemGroup>
+</Project>

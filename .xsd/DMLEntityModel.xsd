@@ -1,0 +1,2950 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.bigbang.io/dml/entityModel" xmlns:bb="http://www.bigbang.io/dml/entityModel">
+  <xsd:element name="configuration">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="entityModel" type="bb:DMLEntityModel" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="DMLEntityModel">
+    <xsd:all>
+      <xsd:element name="baseModel" type="bb:DMLBaseEntityModel" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="icon" type="bb:DMLIcon" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="constant" type="bb:DMLEntityModelConstant" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="propertiesCollection" type="bb:DMLEntityPropertyCollection" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="commands" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="create" type="bb:DMLEntityModelCreateCommand" />
+            <xsd:element name="read" type="bb:DMLEntityModelReadCommand" />
+            <xsd:element name="update" type="bb:DMLEntityModelUpdateCommand" />
+            <xsd:element name="delete" type="bb:DMLEntityModelDeleteCommand" />
+            <xsd:element name="custom" type="bb:DMLEntityModelCustomCommand" />
+            <xsd:element name="storedProcedure" type="bb:DMLEntityModelStoredProcedureCommand" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="formatting" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="constant" type="bb:DMLModelFormattingConstant" />
+            <xsd:element name="property" type="bb:DMLModelFormattingProperty" />
+            <xsd:element name="dynamic" type="bb:DMLModelFormattingExpression" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="exportFormatting" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="constant" type="bb:DMLModelFormattingConstant" />
+            <xsd:element name="property" type="bb:DMLModelFormattingProperty" />
+            <xsd:element name="dynamic" type="bb:DMLModelFormattingExpression" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="printTemplates" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="printTemplate" type="bb:DMLPrintTemplate" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="defaultSorts" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="defaultSort" type="bb:DMLEntityModelDefaultSort" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="stateMachine" type="bb:DMLEntityModelStateMachine" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="relatedReports" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="relatedReport" type="bb:DMLEntityModelRelatedReport" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="presentFormExpression" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="searchFormExpression" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="newNavigationFormExpression" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="editNavigationFormExpression" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="defaultEditor" type="bb:DMLModelDefaultEditor" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="preferences" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="createDate" type="bb:DMLCreateDatePreference" />
+            <xsd:element name="modifiedDate" type="bb:DMLModifiedDatePreference" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="predefinedFilters" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="self" type="bb:DMLSelfPredefinedFilter" />
+            <xsd:element name="base" type="bb:DMLBasePredefinedFilter" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="defaultRestrictions" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="custom" type="bb:DMLCustomRestriction" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="systemRestrictions" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="custom" type="bb:DMLCustomRestriction" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="notification" type="bb:DMLEntityNotification" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="interfaces" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="interface" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="interfaceMappings" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="interfaceMapping" type="bb:DMLEntityInterfacePropertyMapping" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="dragCondition" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="rowAccessLevelProperties" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>by default searchable properties will be shown in row access level filter. Set this property to customize it</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="rowAccessLevelProperty" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="selfReferencePolicy" type="bb:DMLSelfReferencePolicy" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="autoCreate" type="bb:DMLEntityModelAutoCreate" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="createTemplateForms" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="createTemplateForm" type="bb:DMLCreateTemplateForm" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="hasChildrenExpression" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="extensions" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded" />
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="inheritancySelfReferenceType" type="bb:DMLInheritancySelfReferenceType" use="optional">
+      <xsd:annotation>
+        <xsd:documentation>Type of parent and children property in inheritancy</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="name" use="required">
+      <xsd:annotation>
+        <xsd:documentation>Name of entity model must be matched by this pattern: ^[A-Za-z_][A-Za-z0-9_]*$</xsd:documentation>
+      </xsd:annotation>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:pattern value="^[A-Za-z_][A-Za-z0-9_]*$" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:attribute>
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="isReadOnly" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="moduleName" use="required" type="xsd:string" />
+    <xsd:attribute name="presentForm" use="optional" type="xsd:string" />
+    <xsd:attribute name="searchForm" use="optional" type="xsd:string" />
+    <xsd:attribute name="newNavigationForm" use="optional" type="xsd:string" />
+    <xsd:attribute name="editNavigationForm" use="optional" type="xsd:string" />
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="presentInDevelopment" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isAbstract" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSealed" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="abstractionPolicy" type="bb:DMLAbstractionPolicy" use="optional" />
+    <xsd:attribute name="isLocateSupported" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isLocateFromSupported" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isDefaultViewSupported" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isAdditionalPropertiesSupported" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="defaultSearchProperty" use="optional" type="xsd:string" />
+    <xsd:attribute name="partialLoad" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="aliasName" use="optional" type="xsd:string" />
+    <xsd:attribute name="abstractEntityAddingPolicy" type="bb:DMLAbstractEntityAddingPolicy" use="optional" />
+    <xsd:attribute name="defaultCommand" use="optional" type="xsd:string">
+      <xsd:annotation>
+        <xsd:documentation>The custom command that will be executed when the item double clicked. Default is set to 'Update' command.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="privacy" type="bb:DMLEntityModelPrivacy" use="optional" />
+    <xsd:attribute name="defaultReadModel" use="optional" type="xsd:string" />
+    <xsd:attribute name="defaultAdvancedSearchFilterName" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLBaseEntityModel">
+    <xsd:all>
+      <xsd:element name="settings" type="bb:DMLBaseModelSettings" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="target" use="required" type="xsd:string" />
+    <xsd:attribute name="deleteCascade" type="bb:DMLInheritencyDeleteCascadeMode" use="optional" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLInheritencyDeleteCascadeMode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Exception" />
+      <xsd:enumeration value="Delete" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLBaseModelSettings">
+    <xsd:all>
+      <xsd:element name="properties" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="property" type="bb:DMLBaseModelSettingProperty" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DMLBaseModelSettingProperty">
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="isVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSearchable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isReadOnly" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="viewVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="entryVisible" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLInheritancySelfReferenceType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Self">
+        <xsd:annotation>
+          <xsd:documentation>Parent Property and children type will be set to type of inheritor model</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Base">
+        <xsd:annotation>
+          <xsd:documentation>Parent Property and children type will be set to type of base (root of inheritancy) model</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLIcon">
+    <xsd:choice>
+      <xsd:element name="simple" type="bb:DMLSimpleIcon" />
+      <xsd:element name="font" type="bb:DMLFontIcon" />
+      <xsd:element name="system" type="bb:DMLSystemIcon" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="DMLSimpleIcon">
+    <xsd:all>
+      <xsd:element name="content">
+        <xsd:complexType>
+          <xsd:attribute name="x-key" type="xsd:string" />
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DMLFontIcon">
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="color" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLSystemIcon">
+    <xsd:attribute name="type" type="bb:DMLSystemIconType" use="required" />
+    <xsd:attribute name="color" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLSystemIconType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Submit" />
+      <xsd:enumeration value="Cancel" />
+      <xsd:enumeration value="Apply" />
+      <xsd:enumeration value="Settings" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLEntityModelConstant">
+    <xsd:attribute name="nameProperty" use="required" type="xsd:string" />
+    <xsd:attribute name="valueProperty" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityPropertyCollection">
+    <xsd:all>
+      <xsd:element name="properties" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="primitive" type="bb:DMLEntityModelPrimitiveProperty" />
+            <xsd:element name="complex" type="bb:DMLEntityModelComplexProperty" />
+            <xsd:element name="reference" type="bb:DMLEntityModelReferenceProperty" />
+            <xsd:element name="list" type="bb:DMLEntityModelListProperty" />
+            <xsd:element name="crossReference" type="bb:DMLEntityModelCrossReferenceProperty" />
+            <xsd:element name="extended" type="bb:DMLEntityModelExtendedProperty" />
+            <xsd:element name="virtual" type="bb:DMLEntityModelVirtualProperty" />
+            <xsd:element name="virtualList" type="bb:DMLEntityModelVirtualListProperty" />
+            <xsd:element name="virtualCrossReference" type="bb:DMLEntityModelVirtualCrossReferenceProperty" />
+            <xsd:element name="virtualReference" type="bb:DMLEntityModelVirtualReferenceProperty" />
+            <xsd:element name="virtualComplex" type="bb:DMLEntityModelVirtualComplexProperty" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validations" type="bb:DMLModelValidation" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="changeExpressions" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="changeExpression" type="bb:DMLChangeExpression" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createExpressions" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="createExpression" type="bb:DMLCreateExpression" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="saveExpressions" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="saveExpression" type="bb:DMLSaveExpression" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="summaries" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="max" type="bb:DMLMaxSummary" />
+            <xsd:element name="min" type="bb:DMLMinSummary" />
+            <xsd:element name="sum" type="bb:DMLSumSummary" />
+            <xsd:element name="average" type="bb:DMLAverageSummary" />
+            <xsd:element name="custom" type="bb:DMLCustomSummary" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="layoutExpressions" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="readOnlyField" type="bb:DMLFieldReadOnlyLayoutExpression" />
+            <xsd:element name="disabledField" type="bb:DMLFieldDisabledLayoutExpression" />
+            <xsd:element name="invisibleField" type="bb:DMLFieldInvisibleLayoutExpression" />
+            <xsd:element name="readOnly" type="bb:DMLReadOnlyLayoutExpression" />
+            <xsd:element name="disabled" type="bb:DMLDisabledLayoutExpression" />
+            <xsd:element name="focusField" type="bb:DMLFieldFocusLayoutExpression" />
+            <xsd:element name="backgroundColorField" type="bb:DMLFieldBackgroundColorLayoutExpression" />
+            <xsd:element name="backgroundColor" type="bb:DMLBackgroundColorLayoutExpression" />
+            <xsd:element name="foreColorField" type="bb:DMLFieldForeColorLayoutExpression" />
+            <xsd:element name="foreColor" type="bb:DMLForeColorLayoutExpression" />
+            <xsd:element name="captionColorField" type="bb:DMLFieldCaptionColorLayoutExpression" />
+            <xsd:element name="textDecorationField" type="bb:DMLFieldTextDecorationLayoutExpression" />
+            <xsd:element name="textDecoration" type="bb:DMLTextDecorationLayoutExpression" />
+            <xsd:element name="fontStyleField" type="bb:DMLFieldFontStyleLayoutExpression" />
+            <xsd:element name="fontStyle" type="bb:DMLFontStyleLayoutExpression" />
+            <xsd:element name="filterField" type="bb:DMLFieldFilterLayoutExpression" />
+            <xsd:element name="selectJsonTemplateField" type="bb:DMLFieldSelectJsonSchemaTemplateLayoutExpression" />
+            <xsd:element name="filterEnumField" type="bb:DMLFieldEnumFilterLayoutExpression" />
+            <xsd:element name="crossReferenceFilterField" type="bb:DMLFieldFilterCrossReferenceLayoutExpression" />
+            <xsd:element name="customField" type="bb:DMLFieldCustomLayoutExpression" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="defaultForm" use="optional" type="xsd:string" />
+    <xsd:attribute name="viewForm" use="optional" type="xsd:string" />
+    <xsd:attribute name="editForm" use="optional" type="xsd:string" />
+    <xsd:attribute name="newForm" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelPrimitiveProperty">
+    <xsd:all>
+      <xsd:element name="virtualReference" type="bb:DMLEntityModelVirtualReference" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="propertyType" type="bb:DMLPrimitiveFieldDataType" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="formatType" type="bb:DMLPropertyFormatType" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="editor" type="bb:DMLFieldEditor" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="validation" type="bb:DMLPropertyValidation" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="lazy" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSearchable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isReadOnly" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSortable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="viewVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="entryVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="dynamicFilterKey" use="optional" type="xsd:string" />
+    <xsd:attribute name="logHistory" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelVirtualReference">
+    <xsd:attribute name="target" use="required" type="xsd:string" />
+    <xsd:attribute name="targetProperty" use="optional" type="xsd:string" />
+    <xsd:attribute name="deleteCascade" type="bb:DMLDeleteCascadeMode" use="optional" />
+    <xsd:attribute name="autoLoad" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLDeleteCascadeMode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Exception" />
+      <xsd:enumeration value="Delete" />
+      <xsd:enumeration value="SetNull" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLPrimitiveFieldDataType">
+    <xsd:choice>
+      <xsd:element name="dictionary" type="bb:DMLDictionaryFieldDataType" />
+      <xsd:element name="crossReference" type="bb:DMLCrossReferenceFieldDataType" />
+      <xsd:element name="list" type="bb:DMLListFieldDataType" />
+      <xsd:element name="guid" type="bb:DMLGuidFieldDataType" />
+      <xsd:element name="string" type="bb:DMLStringFieldDataType" />
+      <xsd:element name="dateTime" type="bb:DMLDateTimeFieldDataType" />
+      <xsd:element name="boolean" type="bb:DMLBooleanFieldDataType" />
+      <xsd:element name="byte" type="bb:DMLByteFieldDataType" />
+      <xsd:element name="short" type="bb:DMLShortFieldDataType" />
+      <xsd:element name="int" type="bb:DMLIntFieldDataType" />
+      <xsd:element name="long" type="bb:DMLLongFieldDataType" />
+      <xsd:element name="float" type="bb:DMLFloatFieldDataType" />
+      <xsd:element name="decimal" type="bb:DMLDecimalFieldDataType" />
+      <xsd:element name="double" type="bb:DMLDoubleFieldDataType" />
+      <xsd:element name="binary" type="bb:DMLBinaryFieldDataType" />
+      <xsd:element name="file" type="bb:DMLFileFieldDataType" />
+      <xsd:element name="image" type="bb:DMLImageFieldDataType" />
+      <xsd:element name="version" type="bb:DMLVersionFieldDataType" />
+      <xsd:element name="duration" type="bb:DMLDurationFieldDataType" />
+      <xsd:element name="enum" type="bb:DMLEnumFieldDataType" />
+      <xsd:element name="json" type="bb:DMLJsonFieldDataType" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="DMLDictionaryFieldDataType">
+    <xsd:all>
+      <xsd:element name="valueType" type="bb:DMLDictionaryFilteredFieldDataType" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DMLDictionaryFilteredFieldDataType">
+    <xsd:choice>
+      <xsd:element name="guid" type="bb:DMLGuidFieldDataType" />
+      <xsd:element name="string" type="bb:DMLStringFieldDataType" />
+      <xsd:element name="dateTime" type="bb:DMLDateTimeFieldDataType" />
+      <xsd:element name="boolean" type="bb:DMLBooleanFieldDataType" />
+      <xsd:element name="byte" type="bb:DMLByteFieldDataType" />
+      <xsd:element name="short" type="bb:DMLShortFieldDataType" />
+      <xsd:element name="int" type="bb:DMLIntFieldDataType" />
+      <xsd:element name="long" type="bb:DMLLongFieldDataType" />
+      <xsd:element name="float" type="bb:DMLFloatFieldDataType" />
+      <xsd:element name="decimal" type="bb:DMLDecimalFieldDataType" />
+      <xsd:element name="double" type="bb:DMLDoubleFieldDataType" />
+      <xsd:element name="duration" type="bb:DMLDurationFieldDataType" />
+      <xsd:element name="enum" type="bb:DMLEnumFieldDataType" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="DMLGuidFieldDataType" />
+  <xsd:complexType name="DMLStringFieldDataType">
+    <xsd:attribute name="stripHtmlTags" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLDateTimeFieldDataType" />
+  <xsd:complexType name="DMLBooleanFieldDataType" />
+  <xsd:complexType name="DMLByteFieldDataType" />
+  <xsd:complexType name="DMLShortFieldDataType" />
+  <xsd:complexType name="DMLIntFieldDataType" />
+  <xsd:complexType name="DMLLongFieldDataType" />
+  <xsd:complexType name="DMLFloatFieldDataType" />
+  <xsd:complexType name="DMLDecimalFieldDataType" />
+  <xsd:complexType name="DMLDoubleFieldDataType" />
+  <xsd:complexType name="DMLDurationFieldDataType" />
+  <xsd:complexType name="DMLEnumFieldDataType">
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLCrossReferenceFieldDataType">
+    <xsd:all>
+      <xsd:element name="entityModels" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="entityModel" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="interface" use="optional" type="xsd:string" />
+    <xsd:attribute name="useCrossReferenceTypeWhenInterfaceProvided" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLListFieldDataType">
+    <xsd:all>
+      <xsd:element name="elementType" type="bb:DMLListFilteredFieldDataType" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DMLListFilteredFieldDataType">
+    <xsd:choice>
+      <xsd:element name="object" type="bb:DMLObjectFieldDataType" />
+      <xsd:element name="dictionary" type="bb:DMLDictionaryFieldDataType" />
+      <xsd:element name="model" type="bb:DMLModelFieldDataType" />
+      <xsd:element name="crossReference" type="bb:DMLCrossReferenceFieldDataType" />
+      <xsd:element name="guid" type="bb:DMLGuidFieldDataType" />
+      <xsd:element name="string" type="bb:DMLStringFieldDataType" />
+      <xsd:element name="dateTime" type="bb:DMLDateTimeFieldDataType" />
+      <xsd:element name="boolean" type="bb:DMLBooleanFieldDataType" />
+      <xsd:element name="byte" type="bb:DMLByteFieldDataType" />
+      <xsd:element name="short" type="bb:DMLShortFieldDataType" />
+      <xsd:element name="int" type="bb:DMLIntFieldDataType" />
+      <xsd:element name="long" type="bb:DMLLongFieldDataType" />
+      <xsd:element name="float" type="bb:DMLFloatFieldDataType" />
+      <xsd:element name="decimal" type="bb:DMLDecimalFieldDataType" />
+      <xsd:element name="double" type="bb:DMLDoubleFieldDataType" />
+      <xsd:element name="binary" type="bb:DMLBinaryFieldDataType" />
+      <xsd:element name="file" type="bb:DMLFileFieldDataType" />
+      <xsd:element name="image" type="bb:DMLImageFieldDataType" />
+      <xsd:element name="version" type="bb:DMLVersionFieldDataType" />
+      <xsd:element name="duration" type="bb:DMLDurationFieldDataType" />
+      <xsd:element name="enum" type="bb:DMLEnumFieldDataType" />
+      <xsd:element name="json" type="bb:DMLJsonFieldDataType" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="DMLObjectFieldDataType">
+    <xsd:attribute name="specialType" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLModelFieldDataType">
+    <xsd:attribute name="sourceModel" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLBinaryFieldDataType" />
+  <xsd:complexType name="DMLFileFieldDataType" />
+  <xsd:complexType name="DMLImageFieldDataType" />
+  <xsd:complexType name="DMLVersionFieldDataType" />
+  <xsd:complexType name="DMLJsonFieldDataType">
+    <xsd:attribute name="schema" use="optional" type="xsd:string" />
+    <xsd:attribute name="templateSelectionPolicy" type="bb:DMLJsonTemplateSelectionPolicy" use="optional" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLJsonTemplateSelectionPolicy">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Property" />
+      <xsd:enumeration value="BeforeCreate" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLPropertyFormatType">
+    <xsd:choice>
+      <xsd:element name="currency" type="bb:DMLCurrencyFormatType" />
+      <xsd:element name="time" type="bb:DMLTimeFormatType" />
+      <xsd:element name="date" type="bb:DMLDateFormatType" />
+      <xsd:element name="dateTime" type="bb:DMLDateTimeFormatType" />
+      <xsd:element name="url" type="bb:DMLUrlFormatType" />
+      <xsd:element name="email" type="bb:DMLEmailFormatType" />
+      <xsd:element name="duration" type="bb:DMLDurationFormatType" />
+      <xsd:element name="digit" type="bb:DMLDigitFormatType" />
+      <xsd:element name="custom" type="bb:DMLCustomFormatType" />
+      <xsd:element name="stringFormat" type="bb:DMLStringFormatType" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="DMLCurrencyFormatType" />
+  <xsd:complexType name="DMLTimeFormatType">
+    <xsd:attribute name="durationType" type="bb:DMLTimeFormattingType" use="optional" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLTimeFormattingType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Hour" />
+      <xsd:enumeration value="HourMinute" />
+      <xsd:enumeration value="HourMinuteSecond" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLDateFormatType" />
+  <xsd:complexType name="DMLDateTimeFormatType">
+    <xsd:attribute name="timeRemaining" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLUrlFormatType">
+    <xsd:all>
+      <xsd:element name="textExpression" minOccurs="0" maxOccurs="1" type="xsd:string" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DMLEmailFormatType">
+    <xsd:all>
+      <xsd:element name="textExpression" minOccurs="0" maxOccurs="1" type="xsd:string" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DMLDurationFormatType" />
+  <xsd:complexType name="DMLDigitFormatType">
+    <xsd:attribute name="scale" use="optional" type="xsd:int" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLCustomFormatType">
+    <xsd:all>
+      <xsd:element name="formatting" minOccurs="1" maxOccurs="1" type="xsd:string" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DMLStringFormatType">
+    <xsd:attribute name="format" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLFieldEditor">
+    <xsd:choice>
+      <xsd:element name="boolean" type="bb:DMLBooleanEditor" />
+      <xsd:element name="color" type="bb:DMLColorEditor" />
+      <xsd:element name="cron" type="bb:DMLCronEditor" />
+      <xsd:element name="crossReference" type="bb:DMLCrossReferenceModelEditor" />
+      <xsd:element name="custom" type="bb:DMLCustomEditor" />
+      <xsd:element name="date" type="bb:DMLDateEditor" />
+      <xsd:element name="dateTime" type="bb:DMLDateTimeEditor" />
+      <xsd:element name="duration" type="bb:DMLDurationEditor" />
+      <xsd:element name="enum" type="bb:DMLEnumEditor" />
+      <xsd:element name="file" type="bb:DMLFileEditor" />
+      <xsd:element name="html" type="bb:DMLHtmlEditor" />
+      <xsd:element name="image" type="bb:DMLImageEditor" />
+      <xsd:element name="json" type="bb:DMLJsonEditor" />
+      <xsd:element name="keyValue" type="bb:DMLKeyValueEditor" />
+      <xsd:element name="list" type="bb:DMLListEditor" />
+      <xsd:element name="manyToMany" type="bb:DMLManyToManyEditor" />
+      <xsd:element name="model" type="bb:DMLModelEditor" />
+      <xsd:element name="numerical" type="bb:DMLNumericalEditor" />
+      <xsd:element name="state" type="bb:DMLStateEditor" />
+      <xsd:element name="string" type="bb:DMLStringEditor" />
+      <xsd:element name="time" type="bb:DMLTimeEditor" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="DMLBooleanEditor">
+    <xsd:attribute name="editorType" type="bb:DMLBooleanEditorType" use="optional" />
+    <xsd:attribute name="width" use="optional" type="xsd:string" />
+    <xsd:attribute name="height" use="optional" type="xsd:string" />
+    <xsd:attribute name="direction" type="bb:DMLDirection" use="optional" />
+    <xsd:attribute name="viewMode" type="bb:DMLEditorViewMode" use="optional" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLBooleanEditorType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="CheckBox" />
+      <xsd:enumeration value="ComboBox" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DMLDirection">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Default" />
+      <xsd:enumeration value="RightToLeft" />
+      <xsd:enumeration value="LeftToRight" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DMLEditorViewMode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Default" />
+      <xsd:enumeration value="ViewOnly" />
+      <xsd:enumeration value="InLineEdit" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLColorEditor">
+    <xsd:attribute name="width" use="optional" type="xsd:string" />
+    <xsd:attribute name="height" use="optional" type="xsd:string" />
+    <xsd:attribute name="direction" type="bb:DMLDirection" use="optional" />
+    <xsd:attribute name="viewMode" type="bb:DMLEditorViewMode" use="optional" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLCronEditor">
+    <xsd:attribute name="secondsSupported" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="width" use="optional" type="xsd:string" />
+    <xsd:attribute name="height" use="optional" type="xsd:string" />
+    <xsd:attribute name="direction" type="bb:DMLDirection" use="optional" />
+    <xsd:attribute name="viewMode" type="bb:DMLEditorViewMode" use="optional" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLCrossReferenceModelEditor">
+    <xsd:all>
+      <xsd:element name="businessContext" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="businessContextItem" type="bb:DMLBusinessContextItem" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="isReferenceModelsVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isCompactMode" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="newItem" type="bb:DMLModelEditorButtonDisplayMode" use="optional" />
+    <xsd:attribute name="searchMore" type="bb:DMLModelEditorButtonDisplayMode" use="optional" />
+    <xsd:attribute name="openForm" type="bb:DMLModelEditorButtonDisplayMode" use="optional" />
+    <xsd:attribute name="showLocateForm" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="totalLoadCount" use="optional" type="xsd:int" />
+    <xsd:attribute name="model" use="optional" type="xsd:string" />
+    <xsd:attribute name="isAutoCreateActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="cascadeBusinessContext" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="cascadeParameterContext" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="stringPropertySearchOperator" type="bb:DMLStringPropertySearchOperator" use="optional" />
+    <xsd:attribute name="debounceRate" use="optional" type="xsd:int" />
+    <xsd:attribute name="width" use="optional" type="xsd:string" />
+    <xsd:attribute name="height" use="optional" type="xsd:string" />
+    <xsd:attribute name="direction" type="bb:DMLDirection" use="optional" />
+    <xsd:attribute name="viewMode" type="bb:DMLEditorViewMode" use="optional" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLModelEditorButtonDisplayMode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Show" />
+      <xsd:enumeration value="Hide" />
+      <xsd:enumeration value="Auto" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLBusinessContextItem">
+    <xsd:all>
+      <xsd:element name="value" minOccurs="1" maxOccurs="1" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Expression for business context value</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLStringPropertySearchOperator">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Contains" />
+      <xsd:enumeration value="Equal" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLCustomEditor">
+    <xsd:all>
+      <xsd:element name="configs" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="config" type="bb:DMLCustomEditorConfig" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="editorType" type="bb:DMLCustomEditorType" use="optional" />
+    <xsd:attribute name="width" use="optional" type="xsd:string" />
+    <xsd:attribute name="height" use="optional" type="xsd:string" />
+    <xsd:attribute name="direction" type="bb:DMLDirection" use="optional" />
+    <xsd:attribute name="viewMode" type="bb:DMLEditorViewMode" use="optional" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLCustomEditorType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Inline" />
+      <xsd:enumeration value="Dialog" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLCustomEditorConfig">
+    <xsd:all>
+      <xsd:element name="expression" minOccurs="1" maxOccurs="1" type="xsd:string" />
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLDateEditor">
+    <xsd:attribute name="width" use="optional" type="xsd:string" />
+    <xsd:attribute name="height" use="optional" type="xsd:string" />
+    <xsd:attribute name="direction" type="bb:DMLDirection" use="optional" />
+    <xsd:attribute name="viewMode" type="bb:DMLEditorViewMode" use="optional" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLDateTimeEditor">
+    <xsd:attribute name="width" use="optional" type="xsd:string" />
+    <xsd:attribute name="height" use="optional" type="xsd:string" />
+    <xsd:attribute name="direction" type="bb:DMLDirection" use="optional" />
+    <xsd:attribute name="viewMode" type="bb:DMLEditorViewMode" use="optional" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLDurationEditor">
+    <xsd:attribute name="editorType" type="bb:DMLDurationEditorType" use="optional" />
+    <xsd:attribute name="width" use="optional" type="xsd:string" />
+    <xsd:attribute name="height" use="optional" type="xsd:string" />
+    <xsd:attribute name="direction" type="bb:DMLDirection" use="optional" />
+    <xsd:attribute name="viewMode" type="bb:DMLEditorViewMode" use="optional" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLDurationEditorType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Second" />
+      <xsd:enumeration value="Minute" />
+      <xsd:enumeration value="Hour" />
+      <xsd:enumeration value="Day" />
+      <xsd:enumeration value="DayHour" />
+      <xsd:enumeration value="DayHourMinute" />
+      <xsd:enumeration value="DayHourMinuteSecond" />
+      <xsd:enumeration value="HourMinute" />
+      <xsd:enumeration value="HourMinuteSecond" />
+      <xsd:enumeration value="MinuteSecond" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLEnumEditor">
+    <xsd:attribute name="sortType" type="bb:DMLEnumSortType" use="optional" />
+    <xsd:attribute name="width" use="optional" type="xsd:string" />
+    <xsd:attribute name="height" use="optional" type="xsd:string" />
+    <xsd:attribute name="direction" type="bb:DMLDirection" use="optional" />
+    <xsd:attribute name="viewMode" type="bb:DMLEditorViewMode" use="optional" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLEnumSortType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Index" />
+      <xsd:enumeration value="Value" />
+      <xsd:enumeration value="DisplayNameOrName" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLFileEditor">
+    <xsd:attribute name="isDownloadable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="width" use="optional" type="xsd:string" />
+    <xsd:attribute name="height" use="optional" type="xsd:string" />
+    <xsd:attribute name="direction" type="bb:DMLDirection" use="optional" />
+    <xsd:attribute name="viewMode" type="bb:DMLEditorViewMode" use="optional" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLHtmlEditor">
+    <xsd:attribute name="maxLength" use="optional" type="xsd:int" />
+    <xsd:attribute name="width" use="optional" type="xsd:string" />
+    <xsd:attribute name="height" use="optional" type="xsd:string" />
+    <xsd:attribute name="direction" type="bb:DMLDirection" use="optional" />
+    <xsd:attribute name="viewMode" type="bb:DMLEditorViewMode" use="optional" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLImageEditor">
+    <xsd:attribute name="isDownloadable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="width" use="optional" type="xsd:string" />
+    <xsd:attribute name="height" use="optional" type="xsd:string" />
+    <xsd:attribute name="direction" type="bb:DMLDirection" use="optional" />
+    <xsd:attribute name="viewMode" type="bb:DMLEditorViewMode" use="optional" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLJsonEditor">
+    <xsd:attribute name="showTemplateSelector" use="optional" type="xsd:boolean">
+      <xsd:annotation>
+        <xsd:documentation>Enalbled by default</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="showGrouping" use="optional" type="xsd:boolean">
+      <xsd:annotation>
+        <xsd:documentation>Disabled by default</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="width" use="optional" type="xsd:string" />
+    <xsd:attribute name="height" use="optional" type="xsd:string" />
+    <xsd:attribute name="direction" type="bb:DMLDirection" use="optional" />
+    <xsd:attribute name="viewMode" type="bb:DMLEditorViewMode" use="optional" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLKeyValueEditor">
+    <xsd:all>
+      <xsd:element name="valueEditor" type="bb:DMLFieldEditor" />
+    </xsd:all>
+    <xsd:attribute name="width" use="optional" type="xsd:string" />
+    <xsd:attribute name="height" use="optional" type="xsd:string" />
+    <xsd:attribute name="direction" type="bb:DMLDirection" use="optional" />
+    <xsd:attribute name="viewMode" type="bb:DMLEditorViewMode" use="optional" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLListEditor">
+    <xsd:all>
+      <xsd:element name="elementEditor" type="bb:DMLFieldEditor" />
+    </xsd:all>
+    <xsd:attribute name="width" use="optional" type="xsd:string" />
+    <xsd:attribute name="height" use="optional" type="xsd:string" />
+    <xsd:attribute name="direction" type="bb:DMLDirection" use="optional" />
+    <xsd:attribute name="viewMode" type="bb:DMLEditorViewMode" use="optional" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLManyToManyEditor">
+    <xsd:attribute name="preventDuplicate" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="totalLoadCount" use="optional" type="xsd:int" />
+    <xsd:attribute name="debounceRate" use="optional" type="xsd:int" />
+    <xsd:attribute name="width" use="optional" type="xsd:string" />
+    <xsd:attribute name="height" use="optional" type="xsd:string" />
+    <xsd:attribute name="direction" type="bb:DMLDirection" use="optional" />
+    <xsd:attribute name="viewMode" type="bb:DMLEditorViewMode" use="optional" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLModelEditor">
+    <xsd:all>
+      <xsd:element name="formatting" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="constant" type="bb:DMLModelFormattingConstant" />
+            <xsd:element name="property" type="bb:DMLModelFormattingProperty" />
+            <xsd:element name="dynamic" type="bb:DMLModelFormattingExpression" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="businessContext" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="businessContextItem" type="bb:DMLBusinessContextItem" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="newItem" type="bb:DMLModelEditorButtonDisplayMode" use="optional" />
+    <xsd:attribute name="searchMore" type="bb:DMLModelEditorButtonDisplayMode" use="optional" />
+    <xsd:attribute name="openForm" type="bb:DMLModelEditorButtonDisplayMode" use="optional" />
+    <xsd:attribute name="showLocateForm" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="totalLoadCount" use="optional" type="xsd:int" />
+    <xsd:attribute name="model" use="optional" type="xsd:string" />
+    <xsd:attribute name="editorType" type="bb:DMLModelEditorType" use="optional" />
+    <xsd:attribute name="presentForm" use="optional" type="xsd:string" />
+    <xsd:attribute name="searchForm" use="optional" type="xsd:string" />
+    <xsd:attribute name="isAutoCreateActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="cascadeBusinessContext" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="cascadeParameterContext" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="stringPropertySearchOperator" type="bb:DMLStringPropertySearchOperator" use="optional" />
+    <xsd:attribute name="debounceRate" use="optional" type="xsd:int" />
+    <xsd:attribute name="width" use="optional" type="xsd:string" />
+    <xsd:attribute name="height" use="optional" type="xsd:string" />
+    <xsd:attribute name="direction" type="bb:DMLDirection" use="optional" />
+    <xsd:attribute name="viewMode" type="bb:DMLEditorViewMode" use="optional" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLModelEditorType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="ComboBox" />
+      <xsd:enumeration value="Lookup" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLModelFormattingConstant">
+    <xsd:attribute name="value" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLModelFormattingProperty">
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLModelFormattingExpression">
+    <xsd:all>
+      <xsd:element name="expression" minOccurs="1" maxOccurs="1" type="xsd:string" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DMLNumericalEditor">
+    <xsd:attribute name="decimalPlaces" use="optional" type="xsd:int" />
+    <xsd:attribute name="decimalCharacter" use="optional" type="xsd:string" />
+    <xsd:attribute name="decimalCharacterAlternate" use="optional" type="xsd:string" />
+    <xsd:attribute name="currencySymbol" type="bb:DMLSymbol" use="optional" />
+    <xsd:attribute name="currencySymbolPosition" type="bb:DMLSymbolPosition" use="optional" />
+    <xsd:attribute name="digitGroupSeparator" use="optional" type="xsd:string" />
+    <xsd:attribute name="isDigitGrouping" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="minValue" use="optional" type="xsd:decimal" />
+    <xsd:attribute name="maxValue" use="optional" type="xsd:decimal" />
+    <xsd:attribute name="width" use="optional" type="xsd:string" />
+    <xsd:attribute name="height" use="optional" type="xsd:string" />
+    <xsd:attribute name="direction" type="bb:DMLDirection" use="optional" />
+    <xsd:attribute name="viewMode" type="bb:DMLEditorViewMode" use="optional" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLSymbol">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Rial" />
+      <xsd:enumeration value="Doller" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DMLSymbolPosition">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Left" />
+      <xsd:enumeration value="Right" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLStateEditor">
+    <xsd:attribute name="width" use="optional" type="xsd:string" />
+    <xsd:attribute name="height" use="optional" type="xsd:string" />
+    <xsd:attribute name="direction" type="bb:DMLDirection" use="optional" />
+    <xsd:attribute name="viewMode" type="bb:DMLEditorViewMode" use="optional" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLStringEditor">
+    <xsd:attribute name="multiline" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isPassword" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="maxLength" use="optional" type="xsd:int" />
+    <xsd:attribute name="width" use="optional" type="xsd:string" />
+    <xsd:attribute name="height" use="optional" type="xsd:string" />
+    <xsd:attribute name="direction" type="bb:DMLDirection" use="optional" />
+    <xsd:attribute name="viewMode" type="bb:DMLEditorViewMode" use="optional" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLTimeEditor">
+    <xsd:attribute name="editorType" type="bb:DMLTimeEditorType" use="optional" />
+    <xsd:attribute name="width" use="optional" type="xsd:string" />
+    <xsd:attribute name="height" use="optional" type="xsd:string" />
+    <xsd:attribute name="direction" type="bb:DMLDirection" use="optional" />
+    <xsd:attribute name="viewMode" type="bb:DMLEditorViewMode" use="optional" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLTimeEditorType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Second" />
+      <xsd:enumeration value="Minute" />
+      <xsd:enumeration value="Hour" />
+      <xsd:enumeration value="HourMinute" />
+      <xsd:enumeration value="HourMinuteSecond" />
+      <xsd:enumeration value="MinuteSecond" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLPropertyValidation">
+    <xsd:all>
+      <xsd:element name="new" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="notNull" type="bb:DMLNotNullFieldValidator" />
+            <xsd:element name="jsonSchema" type="bb:DMLJsonSchemaFieldValidator" />
+            <xsd:element name="binary" type="bb:DMLBinaryFieldValidator" />
+            <xsd:element name="string" type="bb:DMLStringFieldValidator" />
+            <xsd:element name="regex" type="bb:DMLRegularExpressionFieldValidator" />
+            <xsd:element name="custom" type="bb:DMLCustomValidator" />
+            <xsd:element name="number" type="bb:DMLNumberFieldValidator" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="edit" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="notNull" type="bb:DMLNotNullFieldValidator" />
+            <xsd:element name="jsonSchema" type="bb:DMLJsonSchemaFieldValidator" />
+            <xsd:element name="binary" type="bb:DMLBinaryFieldValidator" />
+            <xsd:element name="string" type="bb:DMLStringFieldValidator" />
+            <xsd:element name="regex" type="bb:DMLRegularExpressionFieldValidator" />
+            <xsd:element name="custom" type="bb:DMLCustomValidator" />
+            <xsd:element name="number" type="bb:DMLNumberFieldValidator" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="default" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="notNull" type="bb:DMLNotNullFieldValidator" />
+            <xsd:element name="jsonSchema" type="bb:DMLJsonSchemaFieldValidator" />
+            <xsd:element name="binary" type="bb:DMLBinaryFieldValidator" />
+            <xsd:element name="string" type="bb:DMLStringFieldValidator" />
+            <xsd:element name="regex" type="bb:DMLRegularExpressionFieldValidator" />
+            <xsd:element name="custom" type="bb:DMLCustomValidator" />
+            <xsd:element name="number" type="bb:DMLNumberFieldValidator" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DMLNotNullFieldValidator">
+    <xsd:attribute name="message" use="optional" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLJsonSchemaFieldValidator">
+    <xsd:attribute name="message" use="optional" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLBinaryFieldValidator">
+    <xsd:all>
+      <xsd:element name="mimeTypes" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="mimeType" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="maxSize" use="optional" type="xsd:int" />
+    <xsd:attribute name="message" use="optional" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLStringFieldValidator">
+    <xsd:attribute name="min" use="optional" type="xsd:int" />
+    <xsd:attribute name="max" use="optional" type="xsd:int" />
+    <xsd:attribute name="message" use="optional" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLRegularExpressionFieldValidator">
+    <xsd:attribute name="pattern" use="required" type="xsd:string" />
+    <xsd:attribute name="multiline" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="singleline" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="ignoreCase" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="message" use="optional" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLCustomValidator">
+    <xsd:all>
+      <xsd:element name="expression" minOccurs="1" maxOccurs="1" type="xsd:string" />
+    </xsd:all>
+    <xsd:attribute name="message" use="optional" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLNumberFieldValidator">
+    <xsd:attribute name="min" use="required" type="xsd:long" />
+    <xsd:attribute name="max" use="required" type="xsd:long" />
+    <xsd:attribute name="message" use="optional" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelComplexProperty">
+    <xsd:all>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="formatType" type="bb:DMLPropertyFormatType" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="editor" type="bb:DMLFieldEditor" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="validation" type="bb:DMLPropertyValidation" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="specialType" use="required" type="xsd:string" />
+    <xsd:attribute name="lazy" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSearchable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isReadOnly" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSortable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="viewVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="entryVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="dynamicFilterKey" use="optional" type="xsd:string" />
+    <xsd:attribute name="logHistory" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelReferenceProperty">
+    <xsd:all>
+      <xsd:element name="formatting" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="constant" type="bb:DMLModelFormattingConstant" />
+            <xsd:element name="property" type="bb:DMLModelFormattingProperty" />
+            <xsd:element name="dynamic" type="bb:DMLModelFormattingExpression" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="exportFormatting" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="constant" type="bb:DMLModelFormattingConstant" />
+            <xsd:element name="property" type="bb:DMLModelFormattingProperty" />
+            <xsd:element name="dynamic" type="bb:DMLModelFormattingExpression" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="formatType" type="bb:DMLPropertyFormatType" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="editor" type="bb:DMLFieldEditor" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="validation" type="bb:DMLPropertyValidation" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="generateOneToMany" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="ignoreGlobalFilter" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="autoLoad" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSearchable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isReadOnly" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSortable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="viewVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="entryVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="dynamicFilterKey" use="optional" type="xsd:string" />
+    <xsd:attribute name="logHistory" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelListProperty">
+    <xsd:all>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="propertyType" type="bb:DMLFieldDataType" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="formatType" type="bb:DMLPropertyFormatType" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="editor" type="bb:DMLFieldEditor" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="validation" type="bb:DMLPropertyValidation" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSearchable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isReadOnly" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSortable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="viewVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="entryVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="dynamicFilterKey" use="optional" type="xsd:string" />
+    <xsd:attribute name="logHistory" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLFieldDataType">
+    <xsd:choice>
+      <xsd:element name="object" type="bb:DMLObjectFieldDataType" />
+      <xsd:element name="dictionary" type="bb:DMLDictionaryFieldDataType" />
+      <xsd:element name="model" type="bb:DMLModelFieldDataType" />
+      <xsd:element name="crossReference" type="bb:DMLCrossReferenceFieldDataType" />
+      <xsd:element name="list" type="bb:DMLListFieldDataType" />
+      <xsd:element name="guid" type="bb:DMLGuidFieldDataType" />
+      <xsd:element name="string" type="bb:DMLStringFieldDataType" />
+      <xsd:element name="dateTime" type="bb:DMLDateTimeFieldDataType" />
+      <xsd:element name="boolean" type="bb:DMLBooleanFieldDataType" />
+      <xsd:element name="byte" type="bb:DMLByteFieldDataType" />
+      <xsd:element name="short" type="bb:DMLShortFieldDataType" />
+      <xsd:element name="int" type="bb:DMLIntFieldDataType" />
+      <xsd:element name="long" type="bb:DMLLongFieldDataType" />
+      <xsd:element name="float" type="bb:DMLFloatFieldDataType" />
+      <xsd:element name="decimal" type="bb:DMLDecimalFieldDataType" />
+      <xsd:element name="double" type="bb:DMLDoubleFieldDataType" />
+      <xsd:element name="binary" type="bb:DMLBinaryFieldDataType" />
+      <xsd:element name="file" type="bb:DMLFileFieldDataType" />
+      <xsd:element name="image" type="bb:DMLImageFieldDataType" />
+      <xsd:element name="version" type="bb:DMLVersionFieldDataType" />
+      <xsd:element name="duration" type="bb:DMLDurationFieldDataType" />
+      <xsd:element name="enum" type="bb:DMLEnumFieldDataType" />
+      <xsd:element name="json" type="bb:DMLJsonFieldDataType" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelCrossReferenceProperty">
+    <xsd:all>
+      <xsd:element name="entityModels" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="entityModel" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="formatType" type="bb:DMLPropertyFormatType" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="editor" type="bb:DMLFieldEditor" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="validation" type="bb:DMLPropertyValidation" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="modelProperty" use="required" type="xsd:string" />
+    <xsd:attribute name="identityProperty" use="required" type="xsd:string" />
+    <xsd:attribute name="modelPropertyDisplayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="interface" use="optional" type="xsd:string" />
+    <xsd:attribute name="deleteCascade" type="bb:DMLDeleteCascadeMode" use="optional" />
+    <xsd:attribute name="targetProperty" use="optional" type="xsd:string" />
+    <xsd:attribute name="autoLoad" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSearchable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isReadOnly" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSortable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="viewVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="entryVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="dynamicFilterKey" use="optional" type="xsd:string" />
+    <xsd:attribute name="logHistory" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelExtendedProperty">
+    <xsd:all>
+      <xsd:element name="propertyType" type="bb:DMLExtendedFieldDataType" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="formatType" type="bb:DMLPropertyFormatType" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="editor" type="bb:DMLFieldEditor" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="validation" type="bb:DMLPropertyValidation" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="dbViewName" use="required" type="xsd:string" />
+    <xsd:attribute name="autoLoad" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSearchable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isReadOnly" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSortable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="viewVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="entryVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="dynamicFilterKey" use="optional" type="xsd:string" />
+    <xsd:attribute name="logHistory" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLExtendedFieldDataType">
+    <xsd:choice>
+      <xsd:element name="dictionary" type="bb:DMLDictionaryFieldDataType" />
+      <xsd:element name="model" type="bb:DMLModelFieldDataType" />
+      <xsd:element name="crossReference" type="bb:DMLCrossReferenceFieldDataType" />
+      <xsd:element name="list" type="bb:DMLListFieldDataType" />
+      <xsd:element name="guid" type="bb:DMLGuidFieldDataType" />
+      <xsd:element name="string" type="bb:DMLStringFieldDataType" />
+      <xsd:element name="dateTime" type="bb:DMLDateTimeFieldDataType" />
+      <xsd:element name="boolean" type="bb:DMLBooleanFieldDataType" />
+      <xsd:element name="byte" type="bb:DMLByteFieldDataType" />
+      <xsd:element name="short" type="bb:DMLShortFieldDataType" />
+      <xsd:element name="int" type="bb:DMLIntFieldDataType" />
+      <xsd:element name="long" type="bb:DMLLongFieldDataType" />
+      <xsd:element name="float" type="bb:DMLFloatFieldDataType" />
+      <xsd:element name="decimal" type="bb:DMLDecimalFieldDataType" />
+      <xsd:element name="double" type="bb:DMLDoubleFieldDataType" />
+      <xsd:element name="binary" type="bb:DMLBinaryFieldDataType" />
+      <xsd:element name="file" type="bb:DMLFileFieldDataType" />
+      <xsd:element name="image" type="bb:DMLImageFieldDataType" />
+      <xsd:element name="version" type="bb:DMLVersionFieldDataType" />
+      <xsd:element name="duration" type="bb:DMLDurationFieldDataType" />
+      <xsd:element name="enum" type="bb:DMLEnumFieldDataType" />
+      <xsd:element name="json" type="bb:DMLJsonFieldDataType" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelVirtualProperty">
+    <xsd:all>
+      <xsd:element name="propertyType" type="bb:DMLPrimitiveFieldDataType" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="formatType" type="bb:DMLPropertyFormatType" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="editor" type="bb:DMLFieldEditor" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="validation" type="bb:DMLPropertyValidation" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSearchable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isReadOnly" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSortable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="viewVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="entryVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="dynamicFilterKey" use="optional" type="xsd:string" />
+    <xsd:attribute name="logHistory" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelVirtualListProperty">
+    <xsd:all>
+      <xsd:element name="bql" type="bb:DMLBql" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="businessContext" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="businessContextItem" type="bb:DMLBusinessContextItem" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="formatType" type="bb:DMLPropertyFormatType" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="editor" type="bb:DMLFieldEditor" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="validation" type="bb:DMLPropertyValidation" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="target" use="required" type="xsd:string" />
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSearchable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isReadOnly" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSortable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="viewVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="entryVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="dynamicFilterKey" use="optional" type="xsd:string" />
+    <xsd:attribute name="logHistory" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLBql">
+    <xsd:choice>
+      <xsd:element name="and" type="bb:DMLBqlAndGroup" />
+      <xsd:element name="or" type="bb:DMLBqlOrGroup" />
+      <xsd:element name="equal" type="bb:DMLBqlEqualCondition" />
+      <xsd:element name="greaterThan" type="bb:DMLBqlGreaterThanCondition" />
+      <xsd:element name="greaterThanOrEqual" type="bb:DMLBqlGreaterThanOrEqualCondition" />
+      <xsd:element name="lessThan" type="bb:DMLBqlLessThanCondition" />
+      <xsd:element name="lessThanOrEqual" type="bb:DMLBqlLessThanOrEqualCondition" />
+      <xsd:element name="isBetween" type="bb:DMLBqlIsBetweenCondition" />
+      <xsd:element name="beginWith" type="bb:DMLBqlBeginWithCondition" />
+      <xsd:element name="contains" type="bb:DMLBqlContainsCondition" />
+      <xsd:element name="endWith" type="bb:DMLBqlEndWithCondition" />
+      <xsd:element name="isLike" type="bb:DMLBqlIsLikeCondition" />
+      <xsd:element name="isBlank" type="bb:DMLBqlIsBlankCondition" />
+      <xsd:element name="isAnyOf" type="bb:DMLBqlIsAnyOfCondition" />
+      <xsd:element name="dynamicFilter" type="bb:DMLBqlDynamicFilterCondition" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="DMLBqlAndGroup">
+    <xsd:all>
+      <xsd:element name="items" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="and" type="bb:DMLBqlAndGroup" />
+            <xsd:element name="or" type="bb:DMLBqlOrGroup" />
+            <xsd:element name="equal" type="bb:DMLBqlEqualCondition" />
+            <xsd:element name="greaterThan" type="bb:DMLBqlGreaterThanCondition" />
+            <xsd:element name="greaterThanOrEqual" type="bb:DMLBqlGreaterThanOrEqualCondition" />
+            <xsd:element name="lessThan" type="bb:DMLBqlLessThanCondition" />
+            <xsd:element name="lessThanOrEqual" type="bb:DMLBqlLessThanOrEqualCondition" />
+            <xsd:element name="isBetween" type="bb:DMLBqlIsBetweenCondition" />
+            <xsd:element name="beginWith" type="bb:DMLBqlBeginWithCondition" />
+            <xsd:element name="contains" type="bb:DMLBqlContainsCondition" />
+            <xsd:element name="endWith" type="bb:DMLBqlEndWithCondition" />
+            <xsd:element name="isLike" type="bb:DMLBqlIsLikeCondition" />
+            <xsd:element name="isBlank" type="bb:DMLBqlIsBlankCondition" />
+            <xsd:element name="isAnyOf" type="bb:DMLBqlIsAnyOfCondition" />
+            <xsd:element name="dynamicFilter" type="bb:DMLBqlDynamicFilterCondition" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="not" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLBqlOrGroup">
+    <xsd:all>
+      <xsd:element name="items" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="and" type="bb:DMLBqlAndGroup" />
+            <xsd:element name="or" type="bb:DMLBqlOrGroup" />
+            <xsd:element name="equal" type="bb:DMLBqlEqualCondition" />
+            <xsd:element name="greaterThan" type="bb:DMLBqlGreaterThanCondition" />
+            <xsd:element name="greaterThanOrEqual" type="bb:DMLBqlGreaterThanOrEqualCondition" />
+            <xsd:element name="lessThan" type="bb:DMLBqlLessThanCondition" />
+            <xsd:element name="lessThanOrEqual" type="bb:DMLBqlLessThanOrEqualCondition" />
+            <xsd:element name="isBetween" type="bb:DMLBqlIsBetweenCondition" />
+            <xsd:element name="beginWith" type="bb:DMLBqlBeginWithCondition" />
+            <xsd:element name="contains" type="bb:DMLBqlContainsCondition" />
+            <xsd:element name="endWith" type="bb:DMLBqlEndWithCondition" />
+            <xsd:element name="isLike" type="bb:DMLBqlIsLikeCondition" />
+            <xsd:element name="isBlank" type="bb:DMLBqlIsBlankCondition" />
+            <xsd:element name="isAnyOf" type="bb:DMLBqlIsAnyOfCondition" />
+            <xsd:element name="dynamicFilter" type="bb:DMLBqlDynamicFilterCondition" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="not" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLBqlEqualCondition">
+    <xsd:attribute name="value" use="required" type="xsd:string" />
+    <xsd:attribute name="not" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="property" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLBqlGreaterThanCondition">
+    <xsd:attribute name="value" use="required" type="xsd:string" />
+    <xsd:attribute name="not" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="property" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLBqlGreaterThanOrEqualCondition">
+    <xsd:attribute name="value" use="required" type="xsd:string" />
+    <xsd:attribute name="not" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="property" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLBqlLessThanCondition">
+    <xsd:attribute name="value" use="required" type="xsd:string" />
+    <xsd:attribute name="not" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="property" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLBqlLessThanOrEqualCondition">
+    <xsd:attribute name="value" use="required" type="xsd:string" />
+    <xsd:attribute name="not" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="property" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLBqlIsBetweenCondition">
+    <xsd:attribute name="from" use="required" type="xsd:string" />
+    <xsd:attribute name="to" use="required" type="xsd:string" />
+    <xsd:attribute name="not" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="property" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLBqlBeginWithCondition">
+    <xsd:attribute name="value" use="required" type="xsd:string" />
+    <xsd:attribute name="not" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="property" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLBqlContainsCondition">
+    <xsd:attribute name="value" use="required" type="xsd:string" />
+    <xsd:attribute name="not" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="property" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLBqlEndWithCondition">
+    <xsd:attribute name="value" use="required" type="xsd:string" />
+    <xsd:attribute name="not" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="property" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLBqlIsLikeCondition">
+    <xsd:attribute name="value" use="required" type="xsd:string" />
+    <xsd:attribute name="not" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="property" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLBqlIsBlankCondition">
+    <xsd:attribute name="not" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="property" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLBqlIsAnyOfCondition">
+    <xsd:all>
+      <xsd:element name="values" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="value" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="not" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="property" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLBqlDynamicFilterCondition">
+    <xsd:all>
+      <xsd:element name="parameters" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="parameter" type="bb:DMLBqlDynamicFilterParameter" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="operator" type="bb:DMLFilterConditionOperator" use="required" />
+    <xsd:attribute name="filterName" use="required" type="xsd:string" />
+    <xsd:attribute name="not" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="property" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLFilterConditionOperator">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Equal" />
+      <xsd:enumeration value="NotEqual" />
+      <xsd:enumeration value="GreaterThan" />
+      <xsd:enumeration value="GreaterThanOrEqual" />
+      <xsd:enumeration value="LessThan" />
+      <xsd:enumeration value="LessThanOrEqual" />
+      <xsd:enumeration value="IsBetween" />
+      <xsd:enumeration value="IsNotBetween" />
+      <xsd:enumeration value="BeginWith" />
+      <xsd:enumeration value="Contains" />
+      <xsd:enumeration value="DoesNotContains" />
+      <xsd:enumeration value="EndWith" />
+      <xsd:enumeration value="IsLike" />
+      <xsd:enumeration value="IsNotLike" />
+      <xsd:enumeration value="IsBlank" />
+      <xsd:enumeration value="IsNotBlank" />
+      <xsd:enumeration value="IsAnyOf" />
+      <xsd:enumeration value="IsNoneOf" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLBqlDynamicFilterParameter">
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="value" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelVirtualCrossReferenceProperty">
+    <xsd:all>
+      <xsd:element name="entityModels" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="entityModel" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="formatType" type="bb:DMLPropertyFormatType" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="editor" type="bb:DMLFieldEditor" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="validation" type="bb:DMLPropertyValidation" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="modelPropertyDisplayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="interface" use="optional" type="xsd:string" />
+    <xsd:attribute name="deleteCascade" type="bb:DMLDeleteCascadeMode" use="optional" />
+    <xsd:attribute name="targetProperty" use="optional" type="xsd:string" />
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSearchable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isReadOnly" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSortable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="viewVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="entryVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="dynamicFilterKey" use="optional" type="xsd:string" />
+    <xsd:attribute name="logHistory" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelVirtualReferenceProperty">
+    <xsd:all>
+      <xsd:element name="propertyType" type="bb:DMLPrimitiveFieldDataType" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="formatType" type="bb:DMLPropertyFormatType" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="editor" type="bb:DMLFieldEditor" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="validation" type="bb:DMLPropertyValidation" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="target" use="required" type="xsd:string" />
+    <xsd:attribute name="targetProperty" use="optional" type="xsd:string" />
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSearchable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isReadOnly" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSortable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="viewVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="entryVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="dynamicFilterKey" use="optional" type="xsd:string" />
+    <xsd:attribute name="logHistory" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelVirtualComplexProperty">
+    <xsd:all>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="formatType" type="bb:DMLPropertyFormatType" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="editor" type="bb:DMLFieldEditor" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="validation" type="bb:DMLPropertyValidation" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="specialType" use="required" type="xsd:string" />
+    <xsd:attribute name="lazy" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSearchable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isReadOnly" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSortable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="viewVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="entryVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="dynamicFilterKey" use="optional" type="xsd:string" />
+    <xsd:attribute name="logHistory" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLModelValidation">
+    <xsd:all>
+      <xsd:element name="new" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="custom" type="bb:DMLCustomValidator" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="edit" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="custom" type="bb:DMLCustomValidator" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="default" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="custom" type="bb:DMLCustomValidator" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DMLChangeExpression">
+    <xsd:all>
+      <xsd:element name="expression" minOccurs="1" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="properties" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="source" type="bb:DMLSourceExpressionField" />
+            <xsd:element name="target" type="bb:DMLTargetExpressionField" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLSourceExpressionField">
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLTargetExpressionField">
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLCreateExpression">
+    <xsd:all>
+      <xsd:element name="expression" minOccurs="1" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="properties" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="target" type="bb:DMLTargetExpressionField" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLSaveExpression">
+    <xsd:all>
+      <xsd:element name="expression" minOccurs="1" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="properties" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="target" type="bb:DMLTargetExpressionField" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLMaxSummary">
+    <xsd:all>
+      <xsd:element name="formatType" type="bb:DMLPropertyFormatType" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="property" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="hideTitle" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLMinSummary">
+    <xsd:all>
+      <xsd:element name="formatType" type="bb:DMLPropertyFormatType" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="property" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="hideTitle" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLSumSummary">
+    <xsd:all>
+      <xsd:element name="formatType" type="bb:DMLPropertyFormatType" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="property" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="hideTitle" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLAverageSummary">
+    <xsd:all>
+      <xsd:element name="formatType" type="bb:DMLPropertyFormatType" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="property" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="hideTitle" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLCustomSummary">
+    <xsd:all>
+      <xsd:element name="aggregationExpression" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="formatType" type="bb:DMLPropertyFormatType" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="provider" use="required" type="xsd:string" />
+    <xsd:attribute name="property" use="optional" type="xsd:string" />
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="hideTitle" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLFieldReadOnlyLayoutExpression">
+    <xsd:all>
+      <xsd:element name="condition" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="multiBind" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="multiBind" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="field" use="required" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="mode" type="bb:DMLLayoutExpressionMode" use="optional" />
+    <xsd:attribute name="bindTo" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLLayoutExpressionMode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="All" />
+      <xsd:enumeration value="Present">
+        <xsd:annotation>
+          <xsd:documentation>Apply layout expression only on present (like grid and list)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="New" />
+      <xsd:enumeration value="Edit" />
+      <xsd:enumeration value="Form">
+        <xsd:annotation>
+          <xsd:documentation>Apply layout expression on edit and new</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLFieldDisabledLayoutExpression">
+    <xsd:all>
+      <xsd:element name="condition" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="multiBind" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="multiBind" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="field" use="required" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="mode" type="bb:DMLLayoutExpressionMode" use="optional" />
+    <xsd:attribute name="bindTo" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLFieldInvisibleLayoutExpression">
+    <xsd:all>
+      <xsd:element name="condition" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="multiBind" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="multiBind" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="field" use="required" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="mode" type="bb:DMLLayoutExpressionMode" use="optional" />
+    <xsd:attribute name="bindTo" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLReadOnlyLayoutExpression">
+    <xsd:all>
+      <xsd:element name="condition" minOccurs="0" maxOccurs="1" type="xsd:string" />
+    </xsd:all>
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="mode" type="bb:DMLLayoutExpressionMode" use="optional" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLDisabledLayoutExpression">
+    <xsd:all>
+      <xsd:element name="condition" minOccurs="0" maxOccurs="1" type="xsd:string" />
+    </xsd:all>
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="mode" type="bb:DMLLayoutExpressionMode" use="optional" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLFieldFocusLayoutExpression">
+    <xsd:attribute name="field" use="required" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="mode" type="bb:DMLLayoutExpressionMode" use="optional" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLFieldBackgroundColorLayoutExpression">
+    <xsd:all>
+      <xsd:element name="colors">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="color" type="bb:DMLColorCondition" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="multiBind" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="multiBind" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="field" use="required" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="mode" type="bb:DMLLayoutExpressionMode" use="optional" />
+    <xsd:attribute name="bindTo" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLColorCondition">
+    <xsd:all>
+      <xsd:element name="condition" minOccurs="1" maxOccurs="1" type="xsd:string" />
+    </xsd:all>
+    <xsd:attribute name="color" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLBackgroundColorLayoutExpression">
+    <xsd:all>
+      <xsd:element name="colors" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="color" type="bb:DMLColorCondition" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="multiBind" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="multiBind" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="mode" type="bb:DMLLayoutExpressionMode" use="optional" />
+    <xsd:attribute name="bindTo" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLFieldForeColorLayoutExpression">
+    <xsd:all>
+      <xsd:element name="colors">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="color" type="bb:DMLColorCondition" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="multiBind" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="multiBind" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="field" use="required" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="mode" type="bb:DMLLayoutExpressionMode" use="optional" />
+    <xsd:attribute name="bindTo" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLForeColorLayoutExpression">
+    <xsd:all>
+      <xsd:element name="colors">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="color" type="bb:DMLColorCondition" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="multiBind" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="multiBind" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="mode" type="bb:DMLLayoutExpressionMode" use="optional" />
+    <xsd:attribute name="bindTo" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLFieldCaptionColorLayoutExpression">
+    <xsd:all>
+      <xsd:element name="colors">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="color" type="bb:DMLColorCondition" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="multiBind" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="multiBind" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="field" use="required" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="mode" type="bb:DMLLayoutExpressionMode" use="optional" />
+    <xsd:attribute name="bindTo" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLFieldTextDecorationLayoutExpression">
+    <xsd:all>
+      <xsd:element name="decorations">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="decoration" type="bb:DMLTextDecorationCondition" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="multiBind" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="multiBind" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="field" use="required" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="mode" type="bb:DMLLayoutExpressionMode" use="optional" />
+    <xsd:attribute name="bindTo" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLTextDecorationCondition">
+    <xsd:all>
+      <xsd:element name="condition" minOccurs="1" maxOccurs="1" type="xsd:string" />
+    </xsd:all>
+    <xsd:attribute name="decoration" type="bb:DMLTextDecoration" use="required" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLTextDecoration">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="OverLine" />
+      <xsd:enumeration value="LineThrough" />
+      <xsd:enumeration value="UnderLine" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLTextDecorationLayoutExpression">
+    <xsd:all>
+      <xsd:element name="decorations">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="decoration" type="bb:DMLTextDecorationCondition" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="multiBind" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="multiBind" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="mode" type="bb:DMLLayoutExpressionMode" use="optional" />
+    <xsd:attribute name="bindTo" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLFieldFontStyleLayoutExpression">
+    <xsd:all>
+      <xsd:element name="styles">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="style" type="bb:DMLFontStyleCondition" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="multiBind" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="multiBind" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="field" use="required" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="mode" type="bb:DMLLayoutExpressionMode" use="optional" />
+    <xsd:attribute name="bindTo" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLFontStyleCondition">
+    <xsd:all>
+      <xsd:element name="condition" minOccurs="1" maxOccurs="1" type="xsd:string" />
+    </xsd:all>
+    <xsd:attribute name="style" type="bb:DMLFontStyle" use="required" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLFontStyle">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Bold" />
+      <xsd:enumeration value="Italic" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLFontStyleLayoutExpression">
+    <xsd:all>
+      <xsd:element name="styles">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="style" type="bb:DMLFontStyleCondition" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="multiBind" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="multiBind" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="mode" type="bb:DMLLayoutExpressionMode" use="optional" />
+    <xsd:attribute name="bindTo" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLFieldFilterLayoutExpression">
+    <xsd:all>
+      <xsd:element name="bql" type="bb:DMLBql" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="businessContext" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="businessContextItem" type="bb:DMLBusinessContextItem" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="multiBind" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="multiBind" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="field" use="required" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="mode" type="bb:DMLLayoutExpressionMode" use="optional" />
+    <xsd:attribute name="bindTo" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLFieldSelectJsonSchemaTemplateLayoutExpression">
+    <xsd:all>
+      <xsd:element name="multiBind" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="multiBind" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="field" use="required" type="xsd:string" />
+    <xsd:attribute name="template" use="optional" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="mode" type="bb:DMLLayoutExpressionMode" use="optional" />
+    <xsd:attribute name="bindTo" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLFieldEnumFilterLayoutExpression">
+    <xsd:all>
+      <xsd:element name="filter" minOccurs="1" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="multiBind" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="multiBind" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="field" use="required" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="mode" type="bb:DMLLayoutExpressionMode" use="optional" />
+    <xsd:attribute name="bindTo" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLFieldFilterCrossReferenceLayoutExpression">
+    <xsd:all>
+      <xsd:element name="filters" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="filter" type="bb:DMLCrossReferenceFilter" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="multiBind" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="multiBind" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="field" use="required" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="mode" type="bb:DMLLayoutExpressionMode" use="optional" />
+    <xsd:attribute name="bindTo" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLCrossReferenceFilter">
+    <xsd:all>
+      <xsd:element name="bql" type="bb:DMLBql" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="businessContext" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="businessContextItem" type="bb:DMLBusinessContextItem" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="targetModel" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLFieldCustomLayoutExpression">
+    <xsd:all>
+      <xsd:element name="arguments" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="argument" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="multiBind" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="multiBind" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="action" use="required" type="xsd:string" />
+    <xsd:attribute name="field" use="required" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="mode" type="bb:DMLLayoutExpressionMode" use="optional" />
+    <xsd:attribute name="bindTo" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelCreateCommand">
+    <xsd:all>
+      <xsd:element name="preCommands" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="preCommand" type="bb:DMLEntityModelPreCommand" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="postCommands" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="postCommand" type="bb:DMLEntityModelPostCommand" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="associateAffects" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="associateAffect" type="bb:DMLEntityModelAssociateAffect" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="confirmMessage" type="bb:DMLUserMessage" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="successMessage" type="bb:DMLUserMessage" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="icon" type="bb:DMLIcon" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="parametersCollection" type="bb:DMLParameterCollection" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="databaseChannel" type="bb:DMLDatabaseChannel" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="affectType" type="bb:DMLEntityModelCommandAffectType" use="optional" />
+    <xsd:attribute name="executionMode" type="bb:DMLEntityModelCommandExecutionMode" use="optional" />
+    <xsd:attribute name="ignoreSuccessMessage" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="isLoggable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isRestricted" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="dbTimeoutPolicy" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelPreCommand">
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelPostCommand">
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLEntityModelCommandAffectType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Single" />
+      <xsd:enumeration value="Multi" />
+      <xsd:enumeration value="Partial" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DMLEntityModelCommandExecutionMode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Single">
+        <xsd:annotation>
+          <xsd:documentation>Only execution is possible on a single entity</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="MultipleWithIgnoreExceptions">
+        <xsd:annotation>
+          <xsd:documentation>Execution is possible on multiple entities.But the multiple call will raise for each entity.(exception on a command not affect on other commands execution)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="MultipleWithoutIgnoreExceptions">
+        <xsd:annotation>
+          <xsd:documentation>Execution is possible on multiple entities.But the multiple call will raise for each entity.(one exception in execution of a command cause role back of all commands)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="MultipleAsASingleCall">
+        <xsd:annotation>
+          <xsd:documentation>Execution is possible on multiple entities.A single call is executed to method of command. An IEnumerable&lt;&gt; of entity in parameters of method will be required.(one exception in execution of a command cause role back of all commands)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLEntityModelAssociateAffect">
+    <xsd:attribute name="property" use="required" type="xsd:string" />
+    <xsd:attribute name="affectType" type="bb:DMLEntityModelCommandAffectType" use="optional" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLUserMessage">
+    <xsd:all>
+      <xsd:element name="titleExpression" minOccurs="0" maxOccurs="1" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Title expression can generate dynamic title of message. Use 'Model' in expression as selected entity and 'Fields' as parameters.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="messageExpression" minOccurs="0" maxOccurs="1" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Message expression can generate dynamic content of message. Use 'Model' in expression as selected entity and 'Fields' as parameters.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="conditionExpression" minOccurs="0" maxOccurs="1" type="xsd:string" />
+    </xsd:all>
+    <xsd:attribute name="title" use="optional" type="xsd:string">
+      <xsd:annotation>
+        <xsd:documentation>Title can generate static title of message.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="message" use="optional" type="xsd:string">
+      <xsd:annotation>
+        <xsd:documentation>Message can generate static content of message.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+  </xsd:complexType>
+  <xsd:complexType name="DMLParameterCollection">
+    <xsd:all>
+      <xsd:element name="parameters">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="parameter" type="bb:DMLParameter" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="defaultExpressions" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="defaultExpression" type="bb:DMLDefaultExpression" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="changeExpressions" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="changeExpression" type="bb:DMLChangeExpression" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validations" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="custom" type="bb:DMLCustomValidator" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="layoutExpressions" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="readOnlyField" type="bb:DMLFieldReadOnlyLayoutExpression" />
+            <xsd:element name="disabledField" type="bb:DMLFieldDisabledLayoutExpression" />
+            <xsd:element name="invisibleField" type="bb:DMLFieldInvisibleLayoutExpression" />
+            <xsd:element name="readOnly" type="bb:DMLReadOnlyLayoutExpression" />
+            <xsd:element name="disabled" type="bb:DMLDisabledLayoutExpression" />
+            <xsd:element name="focusField" type="bb:DMLFieldFocusLayoutExpression" />
+            <xsd:element name="backgroundColorField" type="bb:DMLFieldBackgroundColorLayoutExpression" />
+            <xsd:element name="backgroundColor" type="bb:DMLBackgroundColorLayoutExpression" />
+            <xsd:element name="foreColorField" type="bb:DMLFieldForeColorLayoutExpression" />
+            <xsd:element name="foreColor" type="bb:DMLForeColorLayoutExpression" />
+            <xsd:element name="captionColorField" type="bb:DMLFieldCaptionColorLayoutExpression" />
+            <xsd:element name="textDecorationField" type="bb:DMLFieldTextDecorationLayoutExpression" />
+            <xsd:element name="textDecoration" type="bb:DMLTextDecorationLayoutExpression" />
+            <xsd:element name="fontStyleField" type="bb:DMLFieldFontStyleLayoutExpression" />
+            <xsd:element name="fontStyle" type="bb:DMLFontStyleLayoutExpression" />
+            <xsd:element name="filterField" type="bb:DMLFieldFilterLayoutExpression" />
+            <xsd:element name="selectJsonTemplateField" type="bb:DMLFieldSelectJsonSchemaTemplateLayoutExpression" />
+            <xsd:element name="filterEnumField" type="bb:DMLFieldEnumFilterLayoutExpression" />
+            <xsd:element name="crossReferenceFilterField" type="bb:DMLFieldFilterCrossReferenceLayoutExpression" />
+            <xsd:element name="customField" type="bb:DMLFieldCustomLayoutExpression" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="form" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLParameter">
+    <xsd:all>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="editor" type="bb:DMLFieldEditor" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="parameterType" type="bb:DMLFieldDataType" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="validations" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="notNull" type="bb:DMLNotNullFieldValidator" />
+            <xsd:element name="jsonSchema" type="bb:DMLJsonSchemaFieldValidator" />
+            <xsd:element name="binary" type="bb:DMLBinaryFieldValidator" />
+            <xsd:element name="string" type="bb:DMLStringFieldValidator" />
+            <xsd:element name="regex" type="bb:DMLRegularExpressionFieldValidator" />
+            <xsd:element name="custom" type="bb:DMLCustomValidator" />
+            <xsd:element name="number" type="bb:DMLNumberFieldValidator" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="sourceType" type="bb:DMLCommandParameterSourceType" use="optional" />
+    <xsd:attribute name="multiplicity" type="bb:DMLCommandParameterValueMultiplicity" use="optional" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="ignoreGlobalFilter" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isReadOnly" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="logHistory" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLCommandParameterSourceType">
+    <xsd:annotation>
+      <xsd:documentation>Source type of parameter</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="This">
+        <xsd:annotation>
+          <xsd:documentation>Locate parameter data from the property of selected entity.(this type is valid for model command and transition)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Self">
+        <xsd:annotation>
+          <xsd:documentation>The selected entity will be assigned to parameter.(this type is valid for model command and transition)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SystemDefined">
+        <xsd:annotation>
+          <xsd:documentation>System parameter like user id or cop</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="UserDefined">
+        <xsd:annotation>
+          <xsd:documentation>This type of parameter will be resolved from user entry</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DMLCommandParameterValueMultiplicity">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Single" />
+      <xsd:enumeration value="Multi" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLDefaultExpression">
+    <xsd:all>
+      <xsd:element name="expression" minOccurs="1" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="properties" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="target" type="bb:DMLTargetExpressionField" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLDatabaseChannel">
+    <xsd:choice>
+      <xsd:element name="readOnly" type="bb:DMLReadOnlyDatabaseChannel" />
+      <xsd:element name="writeOnly" type="bb:DMLWriteOnlyDatabaseChannel" />
+      <xsd:element name="custom" type="bb:DMLCustomDatabaseChannel" />
+      <xsd:element name="default" type="bb:DMLDefaultDatabaseChannel" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="DMLReadOnlyDatabaseChannel" />
+  <xsd:complexType name="DMLWriteOnlyDatabaseChannel" />
+  <xsd:complexType name="DMLCustomDatabaseChannel">
+    <xsd:attribute name="channelName" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLDefaultDatabaseChannel" />
+  <xsd:complexType name="DMLEntityModelReadCommand">
+    <xsd:all>
+      <xsd:element name="associateAffects" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="associateAffect" type="bb:DMLEntityModelAssociateAffect" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="confirmMessage" type="bb:DMLUserMessage" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="successMessage" type="bb:DMLUserMessage" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="icon" type="bb:DMLIcon" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="parametersCollection" type="bb:DMLParameterCollection" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="databaseChannel" type="bb:DMLDatabaseChannel" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="affectType" type="bb:DMLEntityModelCommandAffectType" use="optional" />
+    <xsd:attribute name="executionMode" type="bb:DMLEntityModelCommandExecutionMode" use="optional" />
+    <xsd:attribute name="ignoreSuccessMessage" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="isLoggable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isRestricted" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="dbTimeoutPolicy" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelUpdateCommand">
+    <xsd:all>
+      <xsd:element name="preCommands" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="preCommand" type="bb:DMLEntityModelPreCommand" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="postCommands" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="postCommand" type="bb:DMLEntityModelPostCommand" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="associateAffects" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="associateAffect" type="bb:DMLEntityModelAssociateAffect" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="confirmMessage" type="bb:DMLUserMessage" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="successMessage" type="bb:DMLUserMessage" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="icon" type="bb:DMLIcon" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="parametersCollection" type="bb:DMLParameterCollection" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="databaseChannel" type="bb:DMLDatabaseChannel" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="affectType" type="bb:DMLEntityModelCommandAffectType" use="optional" />
+    <xsd:attribute name="executionMode" type="bb:DMLEntityModelCommandExecutionMode" use="optional" />
+    <xsd:attribute name="ignoreSuccessMessage" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="isLoggable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isRestricted" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="dbTimeoutPolicy" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelDeleteCommand">
+    <xsd:all>
+      <xsd:element name="preCommands" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="preCommand" type="bb:DMLEntityModelPreCommand" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="postCommands" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="postCommand" type="bb:DMLEntityModelPostCommand" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="associateAffects" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="associateAffect" type="bb:DMLEntityModelAssociateAffect" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="confirmMessage" type="bb:DMLUserMessage" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="successMessage" type="bb:DMLUserMessage" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="icon" type="bb:DMLIcon" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="parametersCollection" type="bb:DMLParameterCollection" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="databaseChannel" type="bb:DMLDatabaseChannel" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="affectType" type="bb:DMLEntityModelCommandAffectType" use="optional" />
+    <xsd:attribute name="executionMode" type="bb:DMLEntityModelCommandExecutionMode" use="optional" />
+    <xsd:attribute name="ignoreSuccessMessage" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="isLoggable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isRestricted" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="dbTimeoutPolicy" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelCustomCommand">
+    <xsd:all>
+      <xsd:element name="canExecute" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="hook" type="bb:DMLCustomCommandHook" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="associateAffects" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="associateAffect" type="bb:DMLEntityModelAssociateAffect" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="confirmMessage" type="bb:DMLUserMessage" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="successMessage" type="bb:DMLUserMessage" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="icon" type="bb:DMLIcon" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="parametersCollection" type="bb:DMLParameterCollection" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="databaseChannel" type="bb:DMLDatabaseChannel" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="isSchedulable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="dropParameter" use="optional" type="xsd:string" />
+    <xsd:attribute name="affectType" type="bb:DMLEntityModelCommandAffectType" use="optional" />
+    <xsd:attribute name="executionMode" type="bb:DMLEntityModelCommandExecutionMode" use="optional" />
+    <xsd:attribute name="ignoreSuccessMessage" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="isLoggable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isRestricted" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="dbTimeoutPolicy" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLCustomCommandHook">
+    <xsd:attribute name="assembly" use="required" type="xsd:string" />
+    <xsd:attribute name="jsResourceName" use="required" type="xsd:string" />
+    <xsd:attribute name="serviceName" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelStoredProcedureCommand">
+    <xsd:all>
+      <xsd:element name="expressions" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="default" type="bb:DMLCreateExpression" />
+            <xsd:element name="change" type="bb:DMLChangeExpression" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="preCommands" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="preCommand" type="bb:DMLEntityModelPreCommand" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="postCommands" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="postCommand" type="bb:DMLEntityModelPostCommand" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="associateAffects" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="associateAffect" type="bb:DMLEntityModelAssociateAffect" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="confirmMessage" type="bb:DMLUserMessage" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="successMessage" type="bb:DMLUserMessage" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="icon" type="bb:DMLIcon" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="parametersCollection" type="bb:DMLParameterCollection" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="databaseChannel" type="bb:DMLDatabaseChannel" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="affectType" type="bb:DMLEntityModelCommandAffectType" use="optional" />
+    <xsd:attribute name="executionMode" type="bb:DMLEntityModelCommandExecutionMode" use="optional" />
+    <xsd:attribute name="ignoreSuccessMessage" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="isLoggable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isRestricted" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="dbTimeoutPolicy" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLPrintTemplate">
+    <xsd:all>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="provider" type="bb:DMLPrintProvider" />
+      <xsd:element name="parameters" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="parameter" type="bb:DMLParameter" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="bindings" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="property" type="bb:DMLPrintPropertyToParameterBinding" />
+            <xsd:element name="parameter" type="bb:DMLPrintParameterToParameterBinding" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="icon" type="bb:DMLIcon" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="sourceLoaderType" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLPrintProvider">
+    <xsd:choice>
+      <xsd:element name="crystal" type="bb:DMLCrystalReportPrintProvider" />
+      <xsd:element name="stimulSoft" type="bb:DMLStimulSoftReportPrintProvider" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="DMLCrystalReportPrintProvider">
+    <xsd:all>
+      <xsd:element name="template">
+        <xsd:complexType>
+          <xsd:attribute name="x-key" type="xsd:string" />
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DMLStimulSoftReportPrintProvider">
+    <xsd:all>
+      <xsd:element name="template">
+        <xsd:complexType>
+          <xsd:attribute name="x-key" type="xsd:string" />
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DMLPrintPropertyToParameterBinding">
+    <xsd:attribute name="sourceProperty" use="required" type="xsd:string" />
+    <xsd:attribute name="targetParameter" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLPrintParameterToParameterBinding">
+    <xsd:attribute name="sourceParameter" use="required" type="xsd:string" />
+    <xsd:attribute name="targetParameter" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelDefaultSort">
+    <xsd:attribute name="property" use="required" type="xsd:string" />
+    <xsd:attribute name="sortType" type="bb:DMLEntityModelSortType" use="optional" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLEntityModelSortType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Asc" />
+      <xsd:enumeration value="Desc" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLEntityModelStateMachine">
+    <xsd:all>
+      <xsd:element name="states">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="state" type="bb:DMLEntityModelState" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="transitions">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="transition" type="bb:DMLEntityModelTransition" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="triggers" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="trigger" type="bb:DMLEntityModelTransitionTrigger" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="stateProperty" use="required" type="xsd:string" />
+    <xsd:attribute name="initialState" use="required" type="xsd:string" />
+    <xsd:attribute name="isLoggable" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelState">
+    <xsd:all>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="blockedCommands" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="blockedSelfCommand" type="bb:DMLEntityModelBlockedSelfCommand" />
+            <xsd:element name="blockedAssociateCommand" type="bb:DMLEntityModelBlockedAssociateCommand" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="blockedProperties" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="blockedProperty" type="bb:DMLEntityModelBlockedProperty" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="value" use="required" type="xsd:string" />
+    <xsd:attribute name="comparerValue" use="optional" type="xsd:string" />
+    <xsd:attribute name="comparerOperator" type="bb:DMLStateInfoValueComparerOperator" use="optional" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLStateInfoValueComparerOperator">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Equal" />
+      <xsd:enumeration value="NotEqual" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLEntityModelBlockedSelfCommand">
+    <xsd:attribute name="command" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelBlockedAssociateCommand">
+    <xsd:attribute name="command" use="required" type="xsd:string" />
+    <xsd:attribute name="associateProperty" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelBlockedProperty">
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="blockType" type="bb:DMLEntityModelBlockedPropertyType" use="required" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLEntityModelBlockedPropertyType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="BlockRead" />
+      <xsd:enumeration value="BlockWrite" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLEntityModelTransition">
+    <xsd:all>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="condition" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="relations" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="relation" type="bb:DMLEntityModelStateRelation" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="preCommands" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="preCommand" type="bb:DMLEntityModelPreCommand" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="postCommands" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="postCommand" type="bb:DMLEntityModelPostCommand" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="parametersCollection" type="bb:DMLParameterCollection" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="associateAffects" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="associateAffect" type="bb:DMLEntityModelAssociateAffect" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="confirmMessage" type="bb:DMLUserMessage" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="successMessage" type="bb:DMLUserMessage" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="icon" type="bb:DMLIcon" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="affectType" type="bb:DMLEntityModelTransitionAffectType" use="optional" />
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelStateRelation">
+    <xsd:all>
+      <xsd:element name="condition" minOccurs="0" maxOccurs="1" type="xsd:string" />
+    </xsd:all>
+    <xsd:attribute name="from" use="required" type="xsd:string" />
+    <xsd:attribute name="to" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLEntityModelTransitionAffectType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Single" />
+      <xsd:enumeration value="Multi" />
+      <xsd:enumeration value="Partial" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLEntityModelTransitionTrigger">
+    <xsd:attribute name="state" use="required" type="xsd:string" />
+    <xsd:attribute name="associateProperty" use="required" type="xsd:string" />
+    <xsd:attribute name="associateTransition" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelRelatedReport">
+    <xsd:all>
+      <xsd:element name="bindings" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="binding" type="bb:DMLEntityModelReportBinding" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="report" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelReportBinding">
+    <xsd:attribute name="property" use="required" type="xsd:string" />
+    <xsd:attribute name="parameter" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLAbstractionPolicy">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Abstractable" />
+      <xsd:enumeration value="NonAbstractable" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLModelDefaultEditor">
+    <xsd:choice>
+      <xsd:element name="model" type="bb:DMLModelEditor" />
+      <xsd:element name="custom" type="bb:DMLCustomEditor" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="DMLCreateDatePreference">
+    <xsd:all>
+      <xsd:element name="formatType" type="bb:DMLPropertyFormatType" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="isVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="viewVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="entryVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSearchable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLModifiedDatePreference">
+    <xsd:all>
+      <xsd:element name="formatType" type="bb:DMLPropertyFormatType" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="isVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="viewVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="entryVisible" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isSearchable" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLAbstractEntityAddingPolicy">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="None">
+        <xsd:annotation>
+          <xsd:documentation>Add will be disabled on all form that directly use the abstract model</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="NearestNoneAbstract">
+        <xsd:annotation>
+          <xsd:documentation>First none abstract model in any level of inheritancy selected</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Leaves">
+        <xsd:annotation>
+          <xsd:documentation>The none abstract leaves of inherited item will be selected</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="AllNoneAbstracts">
+        <xsd:annotation>
+          <xsd:documentation>All none abstract inheritor will be selected</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLSelfPredefinedFilter">
+    <xsd:all>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="bql" type="bb:DMLBql" />
+      <xsd:element name="icon" type="bb:DMLIcon" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLBasePredefinedFilter">
+    <xsd:all>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="bql" type="bb:DMLBql" />
+      <xsd:element name="icon" type="bb:DMLIcon" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="baseModel" use="required" type="xsd:string" />
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLCustomRestriction">
+    <xsd:all>
+      <xsd:element name="bql" type="bb:DMLBql" />
+    </xsd:all>
+    <xsd:attribute name="mode" type="bb:DMLRestrictionMode" use="optional" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLRestrictionMode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Create" />
+      <xsd:enumeration value="Update" />
+      <xsd:enumeration value="Delete" />
+      <xsd:enumeration value="Read" />
+      <xsd:enumeration value="All" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLEntityNotification">
+    <xsd:attribute name="realTime" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="addMode" type="bb:DMLEntityNotificationAddMode" use="optional" />
+    <xsd:attribute name="updateMode" type="bb:DMLEntityNotificationUpdateMode" use="optional" />
+    <xsd:attribute name="deleteMode" type="bb:DMLEntityNotificationDeleteMode" use="optional" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLEntityNotificationAddMode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="ToEnd" />
+      <xsd:enumeration value="AsFirst" />
+      <xsd:enumeration value="Sorted" />
+      <xsd:enumeration value="Disabled" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DMLEntityNotificationUpdateMode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Update" />
+      <xsd:enumeration value="UpdateAndCheckRemove" />
+      <xsd:enumeration value="UpdateAndCheckRemoveAndAdd" />
+      <xsd:enumeration value="Disabled" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DMLEntityNotificationDeleteMode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Delete" />
+      <xsd:enumeration value="Disabled" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DMLEntityModelPrivacy">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Public" />
+      <xsd:enumeration value="Private" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLEntityInterfacePropertyMapping">
+    <xsd:all>
+      <xsd:element name="mappings">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="mapping" type="bb:DMLEntityInterfacePropertyMappingItem" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="interface" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityInterfacePropertyMappingItem">
+    <xsd:attribute name="interfaceProperty" use="required" type="xsd:string" />
+    <xsd:attribute name="entityProperty" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLSelfReferencePolicy">
+    <xsd:choice>
+      <xsd:element name="auto" type="bb:DMLAutoSelfReferencePolicy" />
+      <xsd:element name="manual" type="bb:DMLManualSelfReferencePolicy" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="DMLAutoSelfReferencePolicy" />
+  <xsd:complexType name="DMLManualSelfReferencePolicy">
+    <xsd:attribute name="parentProperty" use="optional" type="xsd:string">
+      <xsd:annotation>
+        <xsd:documentation>Parent property name.most the time used when 2 self reference property exists or want to force not self referenced considered as parent property(by passing no value to parent property)</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityModelAutoCreate">
+    <xsd:choice>
+      <xsd:element name="property" type="bb:DMLPropertyEntityModelAutoCreate" />
+      <xsd:element name="custom" type="bb:DMLCustomEntityModelAutoCreate" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="DMLPropertyEntityModelAutoCreate">
+    <xsd:attribute name="property" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLCustomEntityModelAutoCreate">
+    <xsd:all>
+      <xsd:element name="converter" minOccurs="1" maxOccurs="1" type="xsd:string" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DMLCreateTemplateForm">
+    <xsd:all>
+      <xsd:element name="icon" type="bb:DMLIcon" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="visibleExpression" minOccurs="0" maxOccurs="1" type="xsd:string" />
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="description" use="optional" type="xsd:string" />
+    <xsd:attribute name="form" use="required" type="xsd:string" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+  </xsd:complexType>
+  <xsd:simpleType name="BBDuration">
+    <xsd:annotation>
+      <xsd:documentation>pattern is (D.HH:MM:SS | D) In which D is days, HH is 2-digit 00-24 hour, MM is 2-digit 00-59 minute and SS is 2-digit second 00-59</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="^\d+|(\d+\.)?([01]\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

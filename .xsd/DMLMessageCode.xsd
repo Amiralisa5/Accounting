@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.bigbang.io/dml/messageCode" xmlns:bb="http://www.bigbang.io/dml/messageCode">
+  <xsd:element name="configuration">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="messageCode" type="bb:DMLMessageCode" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="DMLMessageCode">
+    <xsd:all>
+      <xsd:element name="informationCodes" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="information" type="bb:DMLMessageInformationCodeItem" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="errorCodes" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="error" type="bb:DMLMessageErrorCodeItem" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DMLMessageInformationCodeItem">
+    <xsd:all>
+      <xsd:element name="description" minOccurs="1" maxOccurs="1" type="xsd:string" />
+    </xsd:all>
+    <xsd:attribute name="code" use="required">
+      <xsd:annotation>
+        <xsd:documentation>Name of code must be matched by this pattern: ^[A-Za-z_][A-Za-z0-9_]*$</xsd:documentation>
+      </xsd:annotation>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:pattern value="^[A-Za-z_][A-Za-z0-9_]*$" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:attribute>
+    <xsd:attribute name="httpStatusCode" type="bb:HttpStatusCode" use="optional">
+      <xsd:annotation>
+        <xsd:documentation>status code</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+  </xsd:complexType>
+  <xsd:simpleType name="HttpStatusCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Continue" />
+      <xsd:enumeration value="SwitchingProtocols" />
+      <xsd:enumeration value="Processing" />
+      <xsd:enumeration value="EarlyHints" />
+      <xsd:enumeration value="OK" />
+      <xsd:enumeration value="Created" />
+      <xsd:enumeration value="Accepted" />
+      <xsd:enumeration value="NonAuthoritativeInformation" />
+      <xsd:enumeration value="NoContent" />
+      <xsd:enumeration value="ResetContent" />
+      <xsd:enumeration value="PartialContent" />
+      <xsd:enumeration value="MultiStatus" />
+      <xsd:enumeration value="AlreadyReported" />
+      <xsd:enumeration value="IMUsed" />
+      <xsd:enumeration value="MultipleChoices" />
+      <xsd:enumeration value="Ambiguous" />
+      <xsd:enumeration value="MovedPermanently" />
+      <xsd:enumeration value="Moved" />
+      <xsd:enumeration value="Found" />
+      <xsd:enumeration value="Redirect" />
+      <xsd:enumeration value="SeeOther" />
+      <xsd:enumeration value="RedirectMethod" />
+      <xsd:enumeration value="NotModified" />
+      <xsd:enumeration value="UseProxy" />
+      <xsd:enumeration value="Unused" />
+      <xsd:enumeration value="TemporaryRedirect" />
+      <xsd:enumeration value="RedirectKeepVerb" />
+      <xsd:enumeration value="PermanentRedirect" />
+      <xsd:enumeration value="BadRequest" />
+      <xsd:enumeration value="Unauthorized" />
+      <xsd:enumeration value="PaymentRequired" />
+      <xsd:enumeration value="Forbidden" />
+      <xsd:enumeration value="NotFound" />
+      <xsd:enumeration value="MethodNotAllowed" />
+      <xsd:enumeration value="NotAcceptable" />
+      <xsd:enumeration value="ProxyAuthenticationRequired" />
+      <xsd:enumeration value="RequestTimeout" />
+      <xsd:enumeration value="Conflict" />
+      <xsd:enumeration value="Gone" />
+      <xsd:enumeration value="LengthRequired" />
+      <xsd:enumeration value="PreconditionFailed" />
+      <xsd:enumeration value="RequestEntityTooLarge" />
+      <xsd:enumeration value="RequestUriTooLong" />
+      <xsd:enumeration value="UnsupportedMediaType" />
+      <xsd:enumeration value="RequestedRangeNotSatisfiable" />
+      <xsd:enumeration value="ExpectationFailed" />
+      <xsd:enumeration value="MisdirectedRequest" />
+      <xsd:enumeration value="UnprocessableEntity" />
+      <xsd:enumeration value="UnprocessableContent" />
+      <xsd:enumeration value="Locked" />
+      <xsd:enumeration value="FailedDependency" />
+      <xsd:enumeration value="UpgradeRequired" />
+      <xsd:enumeration value="PreconditionRequired" />
+      <xsd:enumeration value="TooManyRequests" />
+      <xsd:enumeration value="RequestHeaderFieldsTooLarge" />
+      <xsd:enumeration value="UnavailableForLegalReasons" />
+      <xsd:enumeration value="InternalServerError" />
+      <xsd:enumeration value="NotImplemented" />
+      <xsd:enumeration value="BadGateway" />
+      <xsd:enumeration value="ServiceUnavailable" />
+      <xsd:enumeration value="GatewayTimeout" />
+      <xsd:enumeration value="HttpVersionNotSupported" />
+      <xsd:enumeration value="VariantAlsoNegotiates" />
+      <xsd:enumeration value="InsufficientStorage" />
+      <xsd:enumeration value="LoopDetected" />
+      <xsd:enumeration value="NotExtended" />
+      <xsd:enumeration value="NetworkAuthenticationRequired" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLMessageErrorCodeItem">
+    <xsd:all>
+      <xsd:element name="description" minOccurs="1" maxOccurs="1" type="xsd:string" />
+    </xsd:all>
+    <xsd:attribute name="code" use="required">
+      <xsd:annotation>
+        <xsd:documentation>Name of code must be matched by this pattern: ^[A-Za-z_][A-Za-z0-9_]*$</xsd:documentation>
+      </xsd:annotation>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:pattern value="^[A-Za-z_][A-Za-z0-9_]*$" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:attribute>
+    <xsd:attribute name="httpStatusCode" type="bb:HttpStatusCode" use="optional">
+      <xsd:annotation>
+        <xsd:documentation>status code</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+  </xsd:complexType>
+  <xsd:simpleType name="BBDuration">
+    <xsd:annotation>
+      <xsd:documentation>pattern is (D.HH:MM:SS | D) In which D is days, HH is 2-digit 00-24 hour, MM is 2-digit 00-59 minute and SS is 2-digit second 00-59</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="^\d+|(\d+\.)?([01]\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/entityModel">
+	<entityModel name="ACC_Account" moduleName="DefaultModule">
+		<propertiesCollection>
+			<properties>
+				<primitive name="Id" order="1" />
+				<primitive name="DisplayName" order="2" />
+				<primitive name="Level" order="3" />
+				<primitive name="Code" order="4" />
+				<primitive name="IsPermanent" order="5" />
+				<primitive name="IsCustom" order="6" />
+				<primitive name="Nature" order="7" >
+					<propertyType>
+						<enum name="AccountNature"/>
+					</propertyType>
+				</primitive>
+				<primitive name="Name" order="8" />
+				<primitive name="LookupType" order="9" >
+					<propertyType>
+						<enum name="LookupType"/>
+					</propertyType>
+				</primitive>
+				<reference name="ParentAccount" order="9" />
+				<reference name="FiscalPeriod" order="10" />
+			</properties>
+		</propertiesCollection>
+	</entityModel>
+</configuration>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/entityModel">
+  <entityModel name="ACC_PersonRole" moduleName="DefaultModule">
+    <propertiesCollection>
+      <properties>
+        <primitive name="Id" order="1" />
+		  <primitive name="PersonRoleTypeId" order="3" >
+			  <propertyType>
+				  <enum name="PersonRoleType"/>
+			  </propertyType>
+		  </primitive>
+        <reference name="Account" order="2" />
+      </properties>
+    </propertiesCollection>
+  </entityModel>
+</configuration>
+

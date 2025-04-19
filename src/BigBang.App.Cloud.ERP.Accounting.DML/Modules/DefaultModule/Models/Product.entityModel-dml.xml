@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/entityModel">
+	<entityModel name="ACC_Product" moduleName="DefaultModule">
+		<propertiesCollection>
+			<properties>
+				<primitive name="Id" order="1" isVisible="true" />
+				<primitive name="Name" order="2" displayName="نام کالا"/>
+				<primitive name="BuyPrice" order="3" displayName="قیمت خرید"/>
+				<primitive name="SuggestedSellPrice" order="4" displayName="قیمت فروش پیشنهادی"/>
+				<primitive name="Stock" order="5" displayName="تعداد" />
+				<reference name="Business" order="6" isVisible="true" />
+			</properties>
+		</propertiesCollection>
+		<printTemplates>
+			<printTemplate name="InvoiceReport" displayName="فاکتور فروش کالا" 
+						   sourceLoaderType="BigBang.App.Cloud.ERP.Accounting.Infrastructure.Reports.InvoiceReport.InvoiceReportPrintTemplate,BigBang.App.Cloud.ERP.Accounting">
+				<description/>
+				<provider>
+					<stimulSoft>
+						<template x-key="InvoiceReport" />
+					</stimulSoft>
+				</provider>
+				<parameters>
+					<parameter displayName="شناسه سند" name="Id" sourceType="UserDefined">
+						<validations>
+							<notNull/>
+						</validations>
+						<parameterType>
+							<guid/>
+						</parameterType>
+					</parameter>
+				</parameters>
+				<bindings>
+					<property sourceProperty="Id" targetParameter="Id"/>
+				</bindings>
+			</printTemplate>
+		</printTemplates>
+	</entityModel>
+</configuration>

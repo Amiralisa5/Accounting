@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/entityModel">
+	<entityModel name="ACC_Article" moduleName="DefaultModule">
+		<propertiesCollection>
+			<properties>
+				<primitive name="Id" order="1" />
+				<primitive name="LookupId" order="2" />
+				<primitive name="Amount" order="3" />
+				<primitive name="Quantity" order="4" />
+				<primitive name="Fee" order="5" />
+				<primitive name="Currency" order="6" >
+					<propertyType>
+						<enum name="Currency"/>
+					</propertyType>
+				</primitive>
+				<primitive name="Type" order="7" >
+					<propertyType>
+						<enum name="ArticleType"/>
+					</propertyType>
+				</primitive>
+				<primitive name="Fee" order="8" />
+				<primitive name="IsTransactionalOnly" order="9" />
+				<reference name="Account" order="10" />
+				<reference name="Voucher" order="11" />
+			</properties>
+		</propertiesCollection>
+	</entityModel>
+</configuration>

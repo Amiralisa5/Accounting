@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.bigbang.io/dml/jsonSchema" xmlns:bb="http://www.bigbang.io/dml/jsonSchema">
+  <xsd:element name="configuration">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="jsonSchema" type="bb:DMLJsonSchema" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="DMLJsonSchema">
+    <xsd:all>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="provider" type="bb:DMLJsonTemplateProvider" />
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="templateExtractionProvider" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLJsonTemplateProvider">
+    <xsd:choice>
+      <xsd:element name="static" type="bb:DMLStaticJsonTemplateProvider" />
+      <xsd:element name="dynamic" type="bb:DynamicJsonTemplateProvider" />
+      <xsd:element name="userDefined" type="bb:UserDefinedJsonTemplateProvider" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="DMLStaticJsonTemplateProvider">
+    <xsd:all>
+      <xsd:element name="template" type="bb:DMLJsonTemplate" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DMLJsonTemplate">
+    <xsd:all>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="templates" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="template" type="bb:DMLJsonTemplate" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="properties" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="property" type="bb:DMLJsonProperty" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLJsonProperty">
+    <xsd:all>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="dataType" type="bb:DMLJsonPropertyDataType" />
+      <xsd:element name="ruleSet" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="custom" type="bb:DMLJsonCustomValidator" />
+            <xsd:element name="notNull" type="bb:DMLJsonNotNullValidator" />
+            <xsd:element name="regex" type="bb:DMLJsonRegularExpressionValidator" />
+            <xsd:element name="string" type="bb:DMLJsonStringValidator" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLJsonPropertyDataType">
+    <xsd:choice>
+      <xsd:element name="boolean" type="bb:DMLBooleanJsonPropertyDataType" />
+      <xsd:element name="dateTime" type="bb:DMLDateTimeJsonPropertyDataType" />
+      <xsd:element name="decimal" type="bb:DMLDecimalJsonPropertyDataType" />
+      <xsd:element name="double" type="bb:DMLDoubleJsonPropertyDataType" />
+      <xsd:element name="image" type="bb:DMLImageJsonPropertyDataType" />
+      <xsd:element name="long" type="bb:DMLLongJsonPropertyDataType" />
+      <xsd:element name="model" type="bb:DMLModelJsonPropertyDataType" />
+      <xsd:element name="string" type="bb:DMLStringJsonPropertyDataType" />
+      <xsd:element name="timeSpan" type="bb:DMLTimeSpanJsonPropertyDataType" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="DMLBooleanJsonPropertyDataType" />
+  <xsd:complexType name="DMLDateTimeJsonPropertyDataType" />
+  <xsd:complexType name="DMLDecimalJsonPropertyDataType" />
+  <xsd:complexType name="DMLDoubleJsonPropertyDataType" />
+  <xsd:complexType name="DMLImageJsonPropertyDataType" />
+  <xsd:complexType name="DMLLongJsonPropertyDataType" />
+  <xsd:complexType name="DMLModelJsonPropertyDataType">
+    <xsd:attribute name="sourceModel" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLStringJsonPropertyDataType" />
+  <xsd:complexType name="DMLTimeSpanJsonPropertyDataType" />
+  <xsd:complexType name="DMLJsonCustomValidator">
+    <xsd:all>
+      <xsd:element name="expression" minOccurs="1" maxOccurs="1" type="xsd:string" />
+    </xsd:all>
+    <xsd:attribute name="message" use="optional" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLJsonNotNullValidator">
+    <xsd:attribute name="message" use="optional" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLJsonRegularExpressionValidator">
+    <xsd:attribute name="pattern" use="required" type="xsd:string" />
+    <xsd:attribute name="multiline" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="singleline" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="ignoreCase" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="message" use="optional" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLJsonStringValidator">
+    <xsd:attribute name="min" use="optional" type="xsd:int" />
+    <xsd:attribute name="max" use="optional" type="xsd:int" />
+    <xsd:attribute name="message" use="optional" type="xsd:string" />
+    <xsd:attribute name="name" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DynamicJsonTemplateProvider">
+    <xsd:attribute name="provider" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="UserDefinedJsonTemplateProvider" />
+  <xsd:simpleType name="BBDuration">
+    <xsd:annotation>
+      <xsd:documentation>pattern is (D.HH:MM:SS | D) In which D is days, HH is 2-digit 00-24 hour, MM is 2-digit 00-59 minute and SS is 2-digit second 00-59</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="^\d+|(\d+\.)?([01]\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

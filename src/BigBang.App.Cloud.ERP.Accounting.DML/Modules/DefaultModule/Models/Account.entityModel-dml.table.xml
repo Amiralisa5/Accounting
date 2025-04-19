@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/entityModel/table">
+  <table schemaOwner="dbo" name="Account" primaryColumnName="Id">
+    <columns>
+      <column Name="Id" typeName="uniqueidentifier" isComputed="false" isAutoNumber="false" netType="System.Guid" allowNull="false" />
+      <column Name="DisplayName" typeName="nvarchar" isComputed="false" isAutoNumber="false" length="50" netType="System.String" allowNull="false" />
+      <column Name="Level" typeName="tinyint" scale="0" precision="3" isComputed="false" isAutoNumber="false" netType="System.Byte" allowNull="false" />
+      <column Name="Code" typeName="varchar" isComputed="false" isAutoNumber="false" length="5" netType="System.String" allowNull="true" />
+      <column Name="IsPermanent" typeName="bit" isComputed="false" isAutoNumber="false" netType="System.Boolean" allowNull="true" />
+      <column Name="IsCustom" typeName="bit" isComputed="false" isAutoNumber="false" netType="System.Boolean" allowNull="false" />
+      <column Name="Nature" typeName="tinyint" scale="0" precision="3" isComputed="false" isAutoNumber="false" netType="System.Byte" allowNull="true" />
+      <column Name="Name" typeName="varchar" isComputed="false" isAutoNumber="false" length="50" netType="System.String" allowNull="false" />
+      <column Name="LookupType" typeName="tinyint" scale="0" precision="3" isComputed="false" isAutoNumber="false" netType="System.Byte" allowNull="true" />
+      <column Name="ParentAccountId" typeName="uniqueidentifier" isComputed="false" isAutoNumber="false" netType="System.Guid" allowNull="true" />
+      <column Name="FiscalPeriodId" typeName="uniqueidentifier" isComputed="false" isAutoNumber="false" netType="System.Guid" allowNull="false" />
+    </columns>
+    <relations>
+      <relation targetTable="Account" sourceColumn="ParentAccountId" deleteRule="NONE" />
+      <relation targetTable="FiscalPeriod" sourceColumn="FiscalPeriodId" deleteRule="NONE" />
+    </relations>
+  </table>
+</configuration>

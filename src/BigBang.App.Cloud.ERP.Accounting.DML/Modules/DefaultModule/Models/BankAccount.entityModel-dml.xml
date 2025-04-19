@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/entityModel">
+	<entityModel name="ACC_BankAccount" moduleName="DefaultModule">
+		<propertiesCollection>
+			<properties>
+				<primitive name="Id" order="1" isVisible="true" />
+				<primitive name="Bank" order="2" displayName="بانک">
+					<propertyType>
+						<enum name="Bank"/>
+					</propertyType>
+				</primitive>
+				<primitive name="HolderName" order="3" displayName="نام صاحب حساب"/>
+				<primitive name="Title" order="4" displayName="عنوان"/>
+				<primitive name="ShebaNumber" order="5" displayName="شماره شبا" />
+				<primitive name="CardNumber" order="6"  displayName="شماره کارت"/>
+				<primitive name="Balance" order="7" displayName="موجودی" />
+				<reference name="Business" order="7" isVisible="true"  />
+			</properties>
+		</propertiesCollection>
+	</entityModel>
+</configuration>

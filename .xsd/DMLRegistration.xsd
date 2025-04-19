@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.bigbang.io/dml/registration" xmlns:bb="http://www.bigbang.io/dml/registration">
+  <xsd:element name="configuration">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="registration" type="bb:DMLRegistration" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="DMLRegistration">
+    <xsd:all>
+      <xsd:element name="fields">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="username" type="bb:DMLRegistrationUsernameField" />
+            <xsd:element name="password" type="bb:DMLRegistrationPasswordField" />
+            <xsd:element name="name" type="bb:DMLRegistrationNameField" />
+            <xsd:element name="email" type="bb:DMLRegistrationEmailField" />
+            <xsd:element name="phone" type="bb:DMLRegistrationPhoneField" />
+            <xsd:element name="custom" type="bb:DMLRegistrationCustomField" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DMLRegistrationUsernameField">
+    <xsd:all>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="icon" type="bb:DMLIcon" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="verification" type="bb:DMLRegistrationFieldVerification" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isRetype" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isPassword" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="validationRegex" use="optional" type="xsd:string" />
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="canChangeInOptions" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLIcon">
+    <xsd:choice>
+      <xsd:element name="simple" type="bb:DMLSimpleIcon" />
+      <xsd:element name="font" type="bb:DMLFontIcon" />
+      <xsd:element name="system" type="bb:DMLSystemIcon" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="DMLSimpleIcon">
+    <xsd:all>
+      <xsd:element name="content">
+        <xsd:complexType>
+          <xsd:attribute name="x-key" type="xsd:string" />
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DMLFontIcon">
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="color" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLSystemIcon">
+    <xsd:attribute name="type" type="bb:DMLSystemIconType" use="required" />
+    <xsd:attribute name="color" use="optional" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLSystemIconType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Submit" />
+      <xsd:enumeration value="Cancel" />
+      <xsd:enumeration value="Apply" />
+      <xsd:enumeration value="Settings" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLRegistrationFieldVerification">
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="canChangeInOptions" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="type" type="bb:DMLVerificationType" use="required" />
+    <xsd:attribute name="providerType" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLVerificationType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="OneStep" />
+      <xsd:enumeration value="TwoSteps" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DMLRegistrationPasswordField">
+    <xsd:all>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="icon" type="bb:DMLIcon" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="verification" type="bb:DMLRegistrationFieldVerification" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isRetype" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isPassword" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="validationRegex" use="optional" type="xsd:string" />
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="canChangeInOptions" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLRegistrationNameField">
+    <xsd:all>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="icon" type="bb:DMLIcon" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="verification" type="bb:DMLRegistrationFieldVerification" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isRetype" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isPassword" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="validationRegex" use="optional" type="xsd:string" />
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="canChangeInOptions" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLRegistrationEmailField">
+    <xsd:all>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="icon" type="bb:DMLIcon" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="verification" type="bb:DMLRegistrationFieldVerification" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isRetype" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isPassword" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="validationRegex" use="optional" type="xsd:string" />
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="canChangeInOptions" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLRegistrationPhoneField">
+    <xsd:all>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="icon" type="bb:DMLIcon" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="verification" type="bb:DMLRegistrationFieldVerification" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isRetype" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isPassword" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="validationRegex" use="optional" type="xsd:string" />
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="canChangeInOptions" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLRegistrationCustomField">
+    <xsd:all>
+      <xsd:element name="description" minOccurs="0" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="icon" type="bb:DMLIcon" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="verification" type="bb:DMLRegistrationFieldVerification" minOccurs="0" maxOccurs="1" />
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="displayName" use="optional" type="xsd:string" />
+    <xsd:attribute name="order" use="optional" type="xsd:int" />
+    <xsd:attribute name="allowNull" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isRetype" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="isPassword" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="validationRegex" use="optional" type="xsd:string" />
+    <xsd:attribute name="isActive" use="optional" type="xsd:boolean" />
+    <xsd:attribute name="canChangeInOptions" use="optional" type="xsd:boolean" />
+  </xsd:complexType>
+  <xsd:simpleType name="BBDuration">
+    <xsd:annotation>
+      <xsd:documentation>pattern is (D.HH:MM:SS | D) In which D is days, HH is 2-digit 00-24 hour, MM is 2-digit 00-59 minute and SS is 2-digit second 00-59</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="^\d+|(\d+\.)?([01]\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

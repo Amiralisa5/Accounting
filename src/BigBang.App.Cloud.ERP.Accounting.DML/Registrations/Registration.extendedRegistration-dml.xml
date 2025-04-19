@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/extendedRegistration">
+	<extendedRegistration>
+		<fields>
+			<username isActive="false"></username>
+		</fields>
+	</extendedRegistration>
+</configuration>

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="20241215141500\Initial_Down.sql" />
+    <None Remove="20241215141500\Initial_Up.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentMigrator" Version="6.2.0" />
+  </ItemGroup>
+</Project>

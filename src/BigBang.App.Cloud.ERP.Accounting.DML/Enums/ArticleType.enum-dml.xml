@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/enum">
+	<enum name="ArticleType">
+		<members>
+			<member name="Debit" displayName="بدهکار" value="1" />
+			<member name="Credit" displayName="بستانکار" value="2" />
+		</members>
+	</enum>
+</configuration>

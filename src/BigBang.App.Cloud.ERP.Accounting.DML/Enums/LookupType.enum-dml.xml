@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/enum">
+	<enum name="LookupType">
+		<members>
+			<member name="Bank" displayName="بانک" value="1" />
+			<member name="Person" displayName="شخص" value="2" />
+			<member name="Product" displayName="کالا" value="3" />
+		</members>
+	</enum>
+</configuration>

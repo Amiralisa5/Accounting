@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.bigbang.io/dml/extendedSecurityTask" xmlns:bb="http://www.bigbang.io/dml/extendedSecurityTask">
+  <xsd:element name="configuration">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="extendedSecurityTask" type="bb:DMLExtendedSecurityTask" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="DMLExtendedSecurityTask">
+    <xsd:all>
+      <xsd:element name="members">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="customOperation" type="bb:DMLCustomOperationSecurityMember" />
+            <xsd:element name="create" type="bb:DMLEntityCreateSecurityMember" />
+            <xsd:element name="customCommand" type="bb:DMLEntityCustomCommandSecurityMember" />
+            <xsd:element name="delete" type="bb:DMLEntityDeleteSecurityMember" />
+            <xsd:element name="log" type="bb:DMLEntityLogSecurityMember" />
+            <xsd:element name="entityPrint" type="bb:DMLEntityPrintSecurityMember" />
+            <xsd:element name="read" type="bb:DMLEntityReadSecurityMember" />
+            <xsd:element name="entity" type="bb:DMLEntitySecurityTaskMember" />
+            <xsd:element name="stateHistory" type="bb:DMLEntityStateHistorySecurityMember" />
+            <xsd:element name="transition" type="bb:DMLEntityTransitionSecurityMember" />
+            <xsd:element name="update" type="bb:DMLEntityUpdateSecurityMember" />
+            <xsd:element name="form" type="bb:DMLFormSecurityMember" />
+            <xsd:element name="globalCommand" type="bb:DMLGlobalCommandSecurityMember" />
+            <xsd:element name="process" type="bb:DMLProcessSecurityMember" />
+            <xsd:element name="report" type="bb:DMLReportSecurityMember" />
+            <xsd:element name="serviceMethod" type="bb:DMLServiceMethodSecurityMember" />
+            <xsd:element name="service" type="bb:DMLServiceSecurityMember" />
+            <xsd:element name="customTask" type="bb:DMLTaskSecurityMember" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLCustomOperationSecurityMember">
+    <xsd:attribute name="operation" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityCreateSecurityMember">
+    <xsd:attribute name="model" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityCustomCommandSecurityMember">
+    <xsd:attribute name="command" use="required" type="xsd:string" />
+    <xsd:attribute name="model" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityDeleteSecurityMember">
+    <xsd:attribute name="model" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityLogSecurityMember">
+    <xsd:attribute name="model" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityPrintSecurityMember">
+    <xsd:attribute name="printTemplate" use="required" type="xsd:string" />
+    <xsd:attribute name="model" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityReadSecurityMember">
+    <xsd:attribute name="model" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntitySecurityTaskMember">
+    <xsd:attribute name="model" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityStateHistorySecurityMember">
+    <xsd:attribute name="model" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityTransitionSecurityMember">
+    <xsd:attribute name="transition" use="required" type="xsd:string" />
+    <xsd:attribute name="model" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLEntityUpdateSecurityMember">
+    <xsd:attribute name="model" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLFormSecurityMember">
+    <xsd:attribute name="form" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLGlobalCommandSecurityMember">
+    <xsd:attribute name="globalCommand" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLProcessSecurityMember">
+    <xsd:attribute name="process" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLReportSecurityMember">
+    <xsd:attribute name="report" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLServiceMethodSecurityMember">
+    <xsd:attribute name="service" use="required" type="xsd:string" />
+    <xsd:attribute name="method" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLServiceSecurityMember">
+    <xsd:attribute name="service" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLTaskSecurityMember">
+    <xsd:attribute name="task" use="required" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:simpleType name="BBDuration">
+    <xsd:annotation>
+      <xsd:documentation>pattern is (D.HH:MM:SS | D) In which D is days, HH is 2-digit 00-24 hour, MM is 2-digit 00-59 minute and SS is 2-digit second 00-59</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="^\d+|(\d+\.)?([01]\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

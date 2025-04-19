@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/entityModel">
+	<entityModel name="ACC_Owner" moduleName="DefaultModule">
+		<propertiesCollection>
+			<properties>
+				<primitive name="Id" order="1" />
+				<primitive name="FirstName" order="2" />
+				<primitive name="LastName" order="3" />
+				<primitive name="MobileNumber" order="4" />
+				<primitive name="UserId" order="5" />
+			</properties>
+		</propertiesCollection>
+	</entityModel>
+</configuration>

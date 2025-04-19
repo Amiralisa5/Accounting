@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/entityModel">
+  <entityModel name="ACC_File" moduleName="DefaultModule">
+    <propertiesCollection>
+      <properties>
+        <primitive name="Id" order="1" />
+        <primitive name="Content" order="2" />
+        <primitive name="FileName" order="3" />
+        <primitive name="Size" order="4" />
+        <primitive name="CreatedDate" order="5" />
+        <primitive name="EntityOwnerId" order="6" />
+        <reference name="Business" order="6" />
+        <reference name="FileConfig" order="7" />
+      </properties>
+    </propertiesCollection>
+  </entityModel>
+</configuration>

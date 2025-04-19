@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/enum">
+	<enum name="PersonRoleType">
+		<members>
+			<member name="Employee" displayName="کارمند" value="1" />
+			<member name="Customer" displayName="مشتری" value="2" />
+			<member name="Supplier" displayName="تامین کننده" value="3" />
+			<member name="BusinessOwner" displayName="صاحب کسب و کار" value="4" />
+			<member name="Investor" displayName="سرمایه گذار" value="5" />
+			<member name="Other" displayName="سایر" value="6" />
+		</members>
+	</enum>
+</configuration>

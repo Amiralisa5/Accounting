@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/enum">
+	<enum name="VoucherType">
+		<members>
+			<member name="Normal" displayName="عادی" value="1" />
+			<member name="Settlement" displayName="تسویه" value="2" />
+			<member name="Opening" displayName="افتتاحیه" value="3" />
+			<member name="Closing" displayName="اختتامیه" value="4" />
+		</members>
+	</enum>
+</configuration>

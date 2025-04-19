@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/entityModel">
+	<entityModel name="ACC_PersonAccount" moduleName="DefaultModule">
+		<propertiesCollection>
+			<properties>
+				<primitive name="Id" order="1" isVisible="true" />
+				<primitive name="FirstName" order="2" displayName="نام" />
+				<primitive name="LastName" order="3" displayName="نام خانوادگی"/>
+				<primitive name="MobileNumber" order="4" displayName="شماره موبایل" />
+				<reference name="Business" order="4" isVisible="true"  />
+			</properties>
+		</propertiesCollection>
+	</entityModel>
+</configuration>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/entityModel/table">
+  <table schemaOwner="dbo" name="FileConfig" primaryColumnName="Id">
+    <columns>
+      <column Name="Id" typeName="int" scale="0" precision="10" isComputed="false" isAutoNumber="true" netType="System.Int32" allowNull="false" />
+      <column Name="EntityName" typeName="varchar" isComputed="false" isAutoNumber="false" length="128" netType="System.String" allowNull="false" />
+      <column Name="ValidExtension" typeName="varchar" isComputed="false" isAutoNumber="false" length="16" netType="System.String" allowNull="false" />
+      <column Name="DisplayName" typeName="nvarchar" isComputed="false" isAutoNumber="false" length="50" netType="System.String" allowNull="false" />
+      <column Name="MaxSizeInbyte" typeName="int" scale="0" precision="10" isComputed="false" isAutoNumber="false" netType="System.Int32" allowNull="false" />
+      <column Name="MinSizeInbyte" typeName="int" scale="0" precision="10" isComputed="false" isAutoNumber="false" netType="System.Int32" allowNull="false" />
+      <column Name="CreatedDate" typeName="datetime" isComputed="false" isAutoNumber="false" netType="System.DateTime" allowNull="false" defaultValue="(getdate())" />
+      <column Name="NamingRule" typeName="nvarchar" isComputed="false" isAutoNumber="false" length="64" netType="System.String" allowNull="true" />
+    </columns>
+  </table>
+</configuration>

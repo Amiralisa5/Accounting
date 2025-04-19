@@ -1,0 +1,188 @@
+{
+  "xml.fileAssociations": [
+    {
+      "pattern": "**/*.application-dml.xml",
+      "systemId": ".bigbang/xsd/DMLApplication.xsd"
+    },
+    {
+      "pattern": "**/*.applicationConstant-dml.xml",
+      "systemId": ".bigbang/xsd/DMLApplicationConstant.xsd"
+    },
+    {
+      "pattern": "**/*.customEditorDefinition-dml.xml",
+      "systemId": ".bigbang/xsd/DMLCustomEditorDefinition.xsd"
+    },
+    {
+      "pattern": "**/*.customFormExtension-dml.xml",
+      "systemId": ".bigbang/xsd/DMLCustomFormExtension.xsd"
+    },
+    {
+      "pattern": "**/*.customSiteItem-dml.xml",
+      "systemId": ".bigbang/xsd/DMLCustomSiteItem.xsd"
+    },
+    {
+      "pattern": "**/*.customView-dml.xml",
+      "systemId": ".bigbang/xsd/DMLCustomView.xsd"
+    },
+    {
+      "pattern": "**/*.dataInitializer-dml.xml",
+      "systemId": ".bigbang/xsd/DMLDataInitializer.xsd"
+    },
+    {
+      "pattern": "**/*.dynamicFilterValue-dml.xml",
+      "systemId": ".bigbang/xsd/DMLDynamicFilterValue.xsd"
+    },
+    {
+      "pattern": "**/*.entityModel-dml.xml",
+      "systemId": ".bigbang/xsd/DMLEntityModel.xsd"
+    },
+    {
+      "pattern": "**/*.enumDefinition-dml.xml",
+      "systemId": ".bigbang/xsd/DMLEnumDefinition.xsd"
+    },
+    {
+      "pattern": "**/*.expressionFunction-dml.xml",
+      "systemId": ".bigbang/xsd/DMLExpressionFunction.xsd"
+    },
+    {
+      "pattern": "**/*.extendedApplicationConstant-dml.xml",
+      "systemId": ".bigbang/xsd/DMLExtendedApplicationConstant.xsd"
+    },
+    {
+      "pattern": "**/*.extendedCustomView-dml.xml",
+      "systemId": ".bigbang/xsd/DMLExtendedCustomView.xsd"
+    },
+    {
+      "pattern": "**/*.extendedEntityModel-dml.xml",
+      "systemId": ".bigbang/xsd/DMLExtendedEntityModel.xsd"
+    },
+    {
+      "pattern": "**/*.extendedForm-dml.xml",
+      "systemId": ".bigbang/xsd/DMLExtendedForm.xsd"
+    },
+    {
+      "pattern": "**/*.extendedGlobalCommand-dml.xml",
+      "systemId": ".bigbang/xsd/DMLExtendedGlobalCommand.xsd"
+    },
+    {
+      "pattern": "**/*.extendedMenu-dml.xml",
+      "systemId": ".bigbang/xsd/DMLExtendedMenu.xsd"
+    },
+    {
+      "pattern": "**/*.extendedModule-dml.xml",
+      "systemId": ".bigbang/xsd/DMLExtendedModule.xsd"
+    },
+    {
+      "pattern": "**/*.extendedProcess-dml.xml",
+      "systemId": ".bigbang/xsd/DMLExtendedProcess.xsd"
+    },
+    {
+      "pattern": "**/*.extendedRegistration-dml.xml",
+      "systemId": ".bigbang/xsd/DMLExtendedRegistration.xsd"
+    },
+    {
+      "pattern": "**/*.extendedReportModel-dml.xml",
+      "systemId": ".bigbang/xsd/DMLExtendedReportModel.xsd"
+    },
+    {
+      "pattern": "**/*.extendedSecurityTask-dml.xml",
+      "systemId": ".bigbang/xsd/DMLExtendedSecurityTask.xsd"
+    },
+    {
+      "pattern": "**/*.form-dml.xml",
+      "systemId": ".bigbang/xsd/DMLForm.xsd"
+    },
+    {
+      "pattern": "**/*.gadget-dml.xml",
+      "systemId": ".bigbang/xsd/DMLGadget.xsd"
+    },
+    {
+      "pattern": "**/*.globalCommand-dml.xml",
+      "systemId": ".bigbang/xsd/DMLGlobalCommand.xsd"
+    },
+    {
+      "pattern": "**/*.globalFilter-dml.xml",
+      "systemId": ".bigbang/xsd/DMLGlobalFilter.xsd"
+    },
+    {
+      "pattern": "**/*.identityProvider-dml.xml",
+      "systemId": ".bigbang/xsd/DMLIdentityProvider.xsd"
+    },
+    {
+      "pattern": "**/*.interfaceModel-dml.xml",
+      "systemId": ".bigbang/xsd/DMLInterfaceModel.xsd"
+    },
+    {
+      "pattern": "**/*.jsonSchema-dml.xml",
+      "systemId": ".bigbang/xsd/DMLJsonSchema.xsd"
+    },
+    {
+      "pattern": "**/*.menu-dml.xml",
+      "systemId": ".bigbang/xsd/DMLMenu.xsd"
+    },
+    {
+      "pattern": "**/*.messageCode-dml.xml",
+      "systemId": ".bigbang/xsd/DMLMessageCode.xsd"
+    },
+    {
+      "pattern": "**/*.migration-dml.xml",
+      "systemId": ".bigbang/xsd/DMLMigration.xsd"
+    },
+    {
+      "pattern": "**/*.module-dml.xml",
+      "systemId": ".bigbang/xsd/DMLModule.xsd"
+    },
+    {
+      "pattern": "**/*.options-dml.xml",
+      "systemId": ".bigbang/xsd/DMLOptions.xsd"
+    },
+    {
+      "pattern": "**/*.process-dml.xml",
+      "systemId": ".bigbang/xsd/DMLProcess.xsd"
+    },
+    {
+      "pattern": "**/*.projectionEntityModel-dml.xml",
+      "systemId": ".bigbang/xsd/DMLProjectionEntityModel.xsd"
+    },
+    {
+      "pattern": "**/*.registration-dml.xml",
+      "systemId": ".bigbang/xsd/DMLRegistration.xsd"
+    },
+    {
+      "pattern": "**/*.reportModel-dml.xml",
+      "systemId": ".bigbang/xsd/DMLReportModel.xsd"
+    },
+    {
+      "pattern": "**/*.resource-dml.xml",
+      "systemId": ".bigbang/xsd/DMLResource.xsd"
+    },
+    {
+      "pattern": "**/*.runtimeApplication-dml.xml",
+      "systemId": ".bigbang/xsd/DMLRuntimeApplication.xsd"
+    },
+    {
+      "pattern": "**/*.securityOperation-dml.xml",
+      "systemId": ".bigbang/xsd/DMLSecurityOperation.xsd"
+    },
+    {
+      "pattern": "**/*.securityTag-dml.xml",
+      "systemId": ".bigbang/xsd/DMLSecurityTag.xsd"
+    },
+    {
+      "pattern": "**/*.securityTask-dml.xml",
+      "systemId": ".bigbang/xsd/DMLSecurityTask.xsd"
+    },
+    {
+      "pattern": "**/*.syncEntityModel-dml.xml",
+      "systemId": ".bigbang/xsd/DMLSyncEntityModel.xsd"
+    },
+    {
+      "pattern": "**/*.virtualEntityModel-dml.xml",
+      "systemId": ".bigbang/xsd/DMLVirtualEntityModel.xsd"
+    },
+    {
+      "pattern": "**/*.webHook-dml.xml",
+      "systemId": ".bigbang/xsd/DMLWebHook.xsd"
+    }
+  ]
+}

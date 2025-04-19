@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://www.bigbang.io/dml/enum">
+	<enum name="Bank">
+		<members>
+			<member name="Ayandeh" displayName="آینده" value="1" />
+			<member name="EghtesadNovin" displayName="اقتصاد نوین" value="2" />
+			<member name="Ansar" displayName="انصار" value="3" />
+			<member name="IranZamin" displayName="ایران زمین" value="4" />
+			<member name="Parsian" displayName="پارسیان" value="5" />
+			<member name="Pasargad" displayName="پاسارگاد" value="6" />
+			<member name="PostBank" displayName="پست بانک" value="7" />
+			<member name="Tejarat" displayName="تجارت" value="8" />
+			<member name="ToseeTaavon" displayName="توسعه تعاون" value="9" />	
+			<member name="TosesSaderat" displayName="توسعه صادرات" value="10" />	
+			<member name="HekmatIranian" displayName="حکمت ایرانیان" value="11" />
+			<member name="KhavareMianeh" displayName="خاورمیانه" value="12" />
+			<member name="Dey" displayName="دی" value="13" />
+			<member name="RefaheKargaran" displayName="رفاه کارگران" value="14" />
+			<member name="Saman" displayName="سامان" value="15" />
+			<member name="Sepah" displayName="سپه" value="16" />
+			<member name="Sarmayeh" displayName="سرمایه" value="17" />
+			<member name="Sina" displayName="سینا" value="18" />
+			<member name="Shahr" displayName="شهر" value="19" />
+			<member name="Saderat" displayName="صادرات" value="20" />
+			<member name="Resalat" displayName="قرض الحسنه رسالت" value="21" />
+			<member name="MehrIran" displayName="قرض الحسنه مهر ایران" value="22" />
+			<member name="Ghavamin" displayName="قوامین" value="23" />
+			<member name="Karafarin" displayName="کارآفرین" value="24" />
+			<member name="Gardeshgari" displayName="گردشگری" value="25" />
+			<member name="Keshavarzi" displayName="کشاورزی" value="26" />
+			<member name="Kowsar" displayName="کوثر" value="27" />
+			<member name="Maskan" displayName="مسکن" value="28" />
+			<member name="Mellat" displayName="ملت" value="29" />
+			<member name="Melli" displayName="ملی" value="30" />
+		</members>
+	</enum>
+</configuration>

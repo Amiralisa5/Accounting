@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.bigbang.io/dml/expressionFunction" xmlns:bb="http://www.bigbang.io/dml/expressionFunction">
+  <xsd:element name="configuration">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="expressionFunction" type="bb:DMLExpressionFunction" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="DMLExpressionFunction">
+    <xsd:all>
+      <xsd:element name="function" minOccurs="1" maxOccurs="1" type="xsd:string" />
+      <xsd:element name="documentation" type="bb:DMLExpressionFunctionDocumentation" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DMLExpressionFunctionDocumentation">
+    <xsd:all>
+      <xsd:element name="sampleCodes">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="sampleCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="parameters" minOccurs="0" maxOccurs="1">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="parameter" type="bb:DMLExpressionFunctionParameter" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="descriptpion" use="optional" type="xsd:string" />
+    <xsd:attribute name="unlimitedArguments" use="required" type="xsd:boolean" />
+    <xsd:attribute name="tag" use="optional" type="xsd:string" />
+    <xsd:attribute name="result" type="bb:DMLExpressionFunctionDataType" use="required" />
+  </xsd:complexType>
+  <xsd:complexType name="DMLExpressionFunctionParameter">
+    <xsd:attribute name="name" use="required" type="xsd:string" />
+    <xsd:attribute name="description" use="required" type="xsd:string" />
+    <xsd:attribute name="optional" use="required" type="xsd:boolean" />
+    <xsd:attribute name="type" type="bb:DMLExpressionFunctionDataType" use="required" />
+  </xsd:complexType>
+  <xsd:simpleType name="DMLExpressionFunctionDataType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Any" />
+      <xsd:enumeration value="Object" />
+      <xsd:enumeration value="Array" />
+      <xsd:enumeration value="String" />
+      <xsd:enumeration value="Number" />
+      <xsd:enumeration value="Boolean" />
+      <xsd:enumeration value="DateTime" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="BBDuration">
+    <xsd:annotation>
+      <xsd:documentation>pattern is (D.HH:MM:SS | D) In which D is days, HH is 2-digit 00-24 hour, MM is 2-digit 00-59 minute and SS is 2-digit second 00-59</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="^\d+|(\d+\.)?([01]\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>
